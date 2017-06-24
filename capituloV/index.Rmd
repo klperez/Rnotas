@@ -1,0 +1,1053 @@
+---
+title       : Visualización de datos en R
+subtitle    : 
+author      : Kevin Pérez C, Profesor Auxiliar
+job         : Departamento de Matemáticas y Estadística - Universidad de Córdoba
+logo        : unicordoba3.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+widescreen  : true
+smaller     : true
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax, bootstrap, quiz, shiny, interactive]            
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Principios del análisis gráfico 
+
+- Principio 1: Mostrar comparaciones
+
+ - La evidencia de una hipótesis siempre es __*relativa*__ con respecto a una hipótesis
+ - Siempre pregunta "¿Comparado con que?"
+
+---
+
+##  Mostrar comparaciones
+
+```{r, echo=FALSE, fig.width=8, fig.height=6.5, fig.align='center'}
+with(subset(iris, Species == 'virginica'), 
+     boxplot(Sepal.Length, xlab = 'The iris virginica Specie', ylab = 'Sepal Length'))
+```
+
+---
+## Mostrar comparaciones 
+
+```{r, echo=FALSE, fig.width=8,fig.height=6.5, fig.align='center'}
+with(iris,boxplot(Sepal.Length~Species, ylab = 'Sepal Length (cm)'))
+```
+
+---
+
+## Principios del análisis gráfico 
+
+- Principio 1: Mostrar comparaciones
+
+ - La evidencia de una hipótesis siempre es *relativa* con respecto a otra hipótesis
+ - Siempre pregunta "¿Comparado con que?"
+
+- Principio 2: Mostrar causalidad, el mecanismo, la explicación, la estructura sistemática
+ - ¿Cuál es su marco causal para pensar en una pregunta?
+
+---
+
+## Mostrar Causalidad
+```{r, echo=FALSE, fig.width=12,fig.height=6.5, fig.align='center'}
+par(mfrow = c(1, 2))
+with(iris,boxplot(Sepal.Length~Species, ylab = 'Sepal Length (cm)'))
+with(iris,boxplot(Petal.Length~Species, ylab = 'Petal Length (cm)'))
+
+```
+
+---
+
+## Principios del análisis gráfico 
+
+* Principio 1: Mostrar comparaciones
+
+- La evidencia de una hipótesis siempre es *relativa* con respecto a otra hipótesis
+ - Siempre pregunta "¿Comparado con que?"
+ 
+* Principio 2: Mostrar causalidad, el mecanismo, la explicación, la estructura sistemática
+ - ¿Cuál es su marco causal para pensar en una pregunta?
+
+* Principio 3: Mostrar datos multivariados
+
+ - Multivariado = más de 2 variables
+ - El mundo real es multivariado
+
+---
+
+## Mostrar datos multivariados
+
+```{r, echo=FALSE, fig.align='center', fig.height=6, fig.width=8, warning=FALSE,message=FALSE}
+suppressMessages(suppressWarnings(library(ggplot2)))
+p <- ggplot(data = mtcars, aes(y = wt, x = mpg))
+p + stat_smooth(method = lm) + geom_point(size = 2.6)
+```
+
+---
+
+## Mostrar datos multivariados
+
+```{r, fig.align='center', echo=FALSE, fig.width=12, fig.heigth=4, warning=FALSE, message=FALSE}
+
+p <- ggplot(mtcars, aes(y = wt, x = mpg)) + facet_grid(. ~ cyl)
+p + stat_smooth(method = lm) + geom_point(size = 2.6)
+
+```
+
+---
+## Principios del análisis gráfico 
+
+* Principio 4: Integración de evidencias
+ 
+ - Integrar palabras, números, imágenes, diagramas
+ - Gráficos que deben hacer uso de muchos modos de presentación de datos
+
+---
+
+## Integrar diferentes formas de evidencias 
+
+<img class=center src= assets/img/img1.png height=450/>
+
+---
+
+## Principios del análisis gráfico 
+
+* Principio 4: Integración de evidencias
+ 
+ - Integrar palabras, números, imágenes, diagramas
+ - Gráficos que deben hacer uso de muchos modos de presentación de datos
+ 
+* Principio 5: Describir y documentar la evidencia con 
+  las adecuadas etiquetas, escalas, fuentes, etc.
+
+ - Un gráfico de datos debe contar una historia completa que sea creíble
+
+---
+## Principios del análisis gráfico 
+
+* Principio 4: Integración de evidencias
+ 
+ - Integrar palabras, números, imágenes, diagramas
+ - Gráficos que deben hacer uso de muchos modos de presentación de datos
+ 
+* Principio 5: Describir y documentar la evidencia con 
+  las adecuadas etiquetas, escalas, fuentes, etc.
+
+ - Un gráfico de datos debe contar una historia completa que sea creíble
+
+* Principio 6: El contenido manda
+
+ - Representaciones analíticas en última instancia, suben o bajan de calidad 
+   debido a la pertinencia e integridad de su contenido.  
+
+---
+
+## Resumen
+
+> * Principio 1: Mostrar comparaciones
+> * Principio 2: Mostrar la causalidad, el mecanismo, la explicación
+> * Principio 3: Mostrar datos multivariados
+> * Principio 4: Integrar diferentes formas de evidencias 
+> * Principio 5: Describir y documentar la evidencia
+> * Principle 6: El contenido manda
+
+---
+
+## El sistema base de gráficos 
+
+- Modelo "Canvas"
+- Comienza con un lienzo en blanco y construye el gráfico desde allí 
+- Comienza con una función `plot` (o similar)
+-Utiliza funciones de anotación (segundo nivel) para añadir/modificar capas del gráfico (`text`, `lines`, `points`, `axis`)
+
+---
+
+## El sistema base de gráficos 
+
+
+- Tiene la ventaja de que permite la construcción de gráficos por capas extremadamente detallados 
+
+- No puedes editar el código una vez hayas empezado (p.e. ajustar los margenes)
+
+- Dificulta la trasmisión de código 
+
+- Los gráficos se convierten en una serie de comandos 
+
+---
+
+## Gráfico Base
+
+```{r, echo = FALSE, fig.height=6, fig.width=12, fig.align='center'}
+suppressMessages(suppressWarnings(library(UsingR)))
+data(diamond)
+fit <- lm(price ~ carat, data = diamond)
+newx <- c(0.16, 0.27, 0.34)
+plot(diamond$carat, diamond$price,  
+     xlab = "Mass (Quilates)", 
+     ylab = "Precio (SIN $)", 
+     bg = "lightblue", 
+     col = "black", cex = 1.1, pch = 21, frame = FALSE)
+abline(fit, lwd = 2)
+points(diamond$carat, predict(fit), pch = 19, col = "red")
+lines(c(0.16, 0.16, 0.12), 
+      c(200, coef(fit)[1] + coef(fit)[2] * 0.16,
+        coef(fit)[1] + coef(fit)[2] * 0.16))
+lines(c(0.27, 0.27, 0.12), 
+      c(200, coef(fit)[1] + coef(fit)[2] * 0.27,
+        coef(fit)[1] + coef(fit)[2] * 0.27))
+lines(c(0.34, 0.34, 0.12), 
+      c(200, coef(fit)[1] + coef(fit)[2] * 0.34,
+        coef(fit)[1] + coef(fit)[2] * 0.34))
+text(newx, rep(250, 3), labels = newx, pos = 2)
+```
+
+---
+
+## El sitema Lattice 
+
+- Los gráficos son creados con una llamada a una sola función (`xyplot`, `bwplot`, etc.)
+
+- Es mucho más versátil para gráficos condicionales: Donde se miran relaciones entre variable en presencia de una variable auxiliar (factor)
+
+- Cosas como margenes o espaciado se generan automáticamente debido a que el gráfico se genera en una sola función 
+
+- Excelente para mostrar gráficos en una sola ventana 
+
+---
+
+## El sitema Lattice 
+
+- A veces no es tan cómodo crear un gráfico en una sola llamada a una función
+
+- Las anotaciones (funciones de bajo nivel) no son tan intuitivas 
+
+- El uso de funciones panel y subíndices son difíciles de manejar, requiere una buena preparación 
+
+- No se puede adicionar nada al gráfico una vez se creo
+
+---
+
+## Gráfico Lattice 
+
+```{r echo=FALSE, fig.height=6,fig.width=12, fig.align='center'}
+suppressMessages(suppressWarnings(library(lattice)))
+state <- data.frame(state.x77, region = state.region)
+xyplot(Life.Exp ~ Income | region, data = state, layout = c(4, 1))
+```
+
+---
+
+## El sistema ggplot2 
+
+- Divide la diferencia entre el sistema base y lattice de muchas formas
+
+- Trata de forma automática con el espaciado, texto, títulos pero de igual forma permite añadir capas al gráfico mediante el operador adición `+`
+
+- De manera visual se comporta parecido a lattice pero generalmente es más intuitivo y fácil de utilizar
+
+- Por defecto escoge muchas opciones del gráfico pero permite un alto grado de personalización
+
+---
+
+## Gráfico ggplot2 
+
+```{r echo=FALSE, message=FALSE,fig.height=6,fig.width=12, fig.align='center'}
+suppressMessages(suppressWarnings(library(ggplot2)))
+data(mpg)
+qplot(displ, hwy, data = mpg)
+```
+
+---
+
+## Que es un dispositivo gráfico?
+
+- Un dispositivo gráfico es algo donde se puede almacenar un gráfico
+   
+   - Una ventana en tu maquina (_screen device_)
+  
+   - Un archivo PDF (_file device_)
+
+   - Un archivo PNG o JPEG (_file device_)
+
+   - Un archivo vector escalable de gráficos (SVG) (_file device_)
+
+- Cuando haces un gráfico R, ha sido enviado a un dispositivo gráfico en especifico
+
+---
+
+## Como se crea un gráfico en R?
+
+Existen dos formas para gráficar. La primera es la más común:
+
+1. Llamar a la función que gráfica como `plot`, `xyplot`, o `qplot`
+
+2. El gráfico aparece en el dispositivo de pantalla
+
+3. Haga anotaciones si lo considera necesario 
+
+4. Disfrute de su gráfico 
+
+```{r,eval=FALSE}
+library(datasets)
+with(faithful, plot(eruptions, 
+                    waiting))  ## Hace que el gráfico aparezca en la pantalla 
+title(main = "Old Faithful Geyser data")  ## Añade un titulo (Anotación)
+```
+
+---
+
+## Como se crea un gráfico en R?
+
+El segundo método es la más común cuando se trata de utilizar dispositivos tipo archivos.
+
+1. Explicitamente lance un dispositivo gráfico
+
+2. Llame la función que realiza el gráfico (Nota: si esta utilizando un dispositivo gráfico mediante un archivo el gráfico no aparecerá en su pantalla)
+
+3. Realice anotaciones si lo considera necesario
+
+3. Explicitamente cierre el dispositivo gráfico con la función `dev.off()` (es extremadamente importante!)
+
+```{r,eval=FALSE}
+pdf(file = "myplot.pdf")  ## Abre el dispositivo PDF; crea 'myplot.pdf' en el dt
+## Crea el gráfico y lo envia al archivo 
+with(faithful, plot(eruptions, waiting))  
+title(main = "Old Faithful Geyser data")  ## Añade el titulo; nada en la pantalla
+dev.off()  ## Cierra el archivo PDF 
+## Ahora puede ver el archivo 'myplot.pdf' en su computadora 
+```
+
+
+---
+
+
+## Gráficos Base 
+
+Los gráficos de base se utilizan con mayor frecuencia y son muy potentes para crear gráficos en 2-D.
+
+- Existen dos fases para crear un gráfico base 
+  - Inicializar un gráfico (función plot)
+  - Anotar (añadir capas) a un gráfico existente
+
+- Llamar a la función `plot(x, y)` o `hist(x)` lanzara le dispositivo gráfico 
+
+- Si los argumentos de `plot` no son de alguna clase especial, entonces se llama al método _default_  de`plot`; Esta función tiene muchos argumentos, permitiéndole definir el título, la etiqueta del eje x, la etiqueta del eje y, etc.
+- El sistema de gráficos base tiene _muchos_ parámetros que se pueden establecer y ajustar; Estos parámetros están documentados en `?Par`.
+
+---
+
+## Gráficos Base: Histograma
+
+```{r,fig.height=5, fig.align='center', fig.width=10}
+suppressMessages(suppressWarnings(library(datasets)))
+hist(airquality$Ozone)  ## Dibuja un gráfico
+```
+
+---
+
+## Gráficos Base: Scatterplot
+
+```{r,fig.height=5, fig.align='center', fig.width=10}
+suppressMessages(suppressWarnings(library(datasets)))
+with(airquality, plot(Wind, Ozone))
+```
+
+---
+
+## Gráficos Base: Boxplot
+
+```{r,fig.height=4.5, fig.align='center', fig.width=10}
+suppressMessages(suppressWarnings(library(datasets))) ;data(airquality)
+airquality <- transform(airquality, Month = factor(Month))
+boxplot(Ozone ~ Month, airquality, xlab = "Month", ylab = "Ozone (ppb)")
+```
+
+---
+
+## Algunos parámetros importantes 
+
+Muchas funciones del sistema base comparten un conjunto de parámetros. Éstos son algunos de los principales:
+
+- `pch`: símbolo a gráficar en puntos (un circulo por defecto)
+
+- `lty`: el tipo de linea (una linea solida por defecto), puede ser discontinua, punteada, etc.
+
+- `lwd`: el ancho de la linea, especificado como un entero 
+
+- `col`: el color a gráficar, especificado como un número, carácter, o código hexadecimal; la función `colors()` regresa un vector de nombres de colores 
+
+- `xlab`: Cadena de caracteres para la etiqueta del eje x
+
+- `ylab`: Cadena de caracteres para la etiqueta del eje y
+
+
+---
+
+## Algunos parámetros importantes 
+
+La función `par()` se utiliza para especificar los parámetros __*globales*__ de gráficos  que afectan a todas las gráficas de una sesión en R. Estos parámetros se pueden sobreescribir cuando se especifican como argumentos a funciones de gráficos específicas.
+
+- `las`: La orientación de las etiquetas del eje en el gráfico
+- `bg`: El color de fondo
+- `mar`: El tamaño del margen
+- `oma`: El tamaño del margen externo (por defecto es 0 en todos los lados)
+- `mfrow`: Número de gráficos por fila, columna (gráficos por filas)
+- `mfcol`: Número de gráficos por fila, columna (gráficos por columnas)
+
+---
+
+## Algunos parámetros importantes 
+
+Valores por defecto para algunos parámetros de gráficos 
+
+```{r}
+par("lty")
+par("col")
+par("pch")
+```
+
+---
+
+## Algunos parámetros importantes 
+
+Valores por defecto para algunos parámetros de gráficos 
+
+```{r}
+par("bg")
+par("mar")
+par("mfrow")
+```
+
+---
+
+## Funciones de Gráficos Base 
+
+- `plot`: Hace un diagrama de dispersión u otro tipo de gráfico dependiendo de la clase del objeto que se está utilizando
+
+- `lines`: Añade líneas a un gráfico, dado un vector `x` de valores  y un correspondiente vector de valores `y` (o una matriz de 2 columnas); Esta función sólo conecta los puntos
+
+- `points`: Añade puntos a un gráfico
+- `text`: Añade etiquetas de texto a un gráfico utilizando coordenadas `x`, `y` especificadas
+- `title`: Añade anotaciones a las etiquetas del eje `x`, `y`, título, subtítulo, margen externo 
+- `mtext`: Añade texto arbitrario a los márgenes (internos o externos) del gráfico
+- `axis`: Añade etiquetas/etiquetas de eje
+
+---
+
+## Gráfico Base con anotación 
+
+```{r,fig.height=5, fig.width=10, fig.align='center'}
+suppressMessages(suppressWarnings(library(datasets)))
+with(airquality, plot(Wind, Ozone))
+title(main = "Ozone and Wind in New York City")  ## Add a title
+```
+
+---
+
+## Gráfico Base con anotación 
+
+```{r,fig.height=5, fig.width=10, fig.align='center'}
+suppressMessages(suppressWarnings(library(datasets)))
+with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in New York City"))
+with(subset(airquality, Month == 5), points(Wind, Ozone, col = "blue"))
+```
+
+---
+
+## Gráfico Base con anotación 
+
+```{r,fig.height=4.5, fig.width=10, fig.align='center'}
+with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in New York City", type = "n"))
+with(subset(airquality, Month == 5), points(Wind, Ozone, col = "blue"))
+with(subset(airquality, Month != 5), points(Wind, Ozone, col = "red"))
+legend("topright", pch = 1, col = c("blue", "red"), legend = c("May", "Other Months"))
+```
+
+---
+
+## Multiples gráficos Base 
+
+```{r,fig.height=4,fig.width=14, fig.align='center'}
+par(mfrow = c(1, 2))
+with(airquality, {
+	plot(Wind, Ozone, main = "Ozone and Wind")
+	plot(Solar.R, Ozone, main = "Ozone and Solar Radiation")
+})
+```
+
+---
+
+## Multiples gráficos Base 
+
+```{r,fig.height=3.5,fig.width=12, fig.align='center'}
+par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
+with(airquality, {
+	plot(Wind, Ozone, main = "Ozone and Wind")
+	plot(Solar.R, Ozone, main = "Ozone and Solar Radiation")
+	plot(Temp, Ozone, main = "Ozone and Temperature")
+	mtext("Ozone and Weather in New York City", outer = TRUE)
+})
+```
+
+---
+
+## Sistema de gráficos lattice 
+
+El sistema de gráficos lattice se implemento utilizando los siguientes paquetes:
+
+- *lattice*: contiene el código para producir gráficos tipo _trellis_ el cual es independiente del sistema base, incluye funciones como: `xyplot`, `bwplot`, `levelplot`
+
+- *grid*: implementa diferentes sistemas gráficos independientes del sistema base, el paquete *lattice* se construyó con base a *grid*
+
+- El sistema lattice no tiene el sistema de dos fases, aspecto que lo separa bastante del sistema base 
+
+---
+
+## Funciones lattice
+
+- `xyplot`: esta es la función principal, crea diagrama de puntos 
+- `bwplot`: gráficos box-and-whiskers, (“boxplots”)
+- `histogram`: histogramas
+- `stripplot`: como un boxplot pero con puntos 
+- `dotplot`: gráficos de puntos en forma de "violín"
+- `splom`: scatterplot matrix; como `pairs` en el sistema base
+- `levelplot`, `contourplot`: para graficar datos de "imágenes"
+
+---
+
+## Funciones lattice 
+
+Las funciones de lattice generalmente toman una formula como primer argumento, 
+de la siguiente forma:
+
+```r
+xyplot(y ~ x | f * g, data)
+```
+
+- Se utiliza la *notación de formula*, debido al `~`.
+
+- Al lado izquierdo de `~` esta la variable del eje y, en el lado derecho esta la variable del eje x
+
+- f y g son _variables condicionales_ — son opcionales 
+  - el `*` indica interacción entre las variables 
+
+- El segundo argumento es el data frame o lista del cual se obtendrán las variables de la formula 
+
+- Sino se especifica ningún otro argumento, se establecerán el resto de valores por defecto.
+
+---
+
+## Gráficos Lattice 
+
+```{r,fig.height=5, fig.width=12,  fig.align='center'}
+suppressMessages(suppressWarnings(library(lattice)))
+suppressMessages(suppressWarnings(library(datasets)))
+xyplot(Ozone ~ Wind, data = airquality)
+```
+
+---
+
+## Gráficos Lattice 
+
+```{r,fig.height=4, fig.width=12,  fig.align='center'}
+suppressMessages(suppressWarnings(library(lattice)))
+suppressMessages(suppressWarnings(library(datasets)))
+airquality <- transform(airquality, Month = factor(Month)) 
+xyplot(Ozone ~ Wind | Month, data = airquality, layout = c(5, 1))
+```
+
+---
+
+## Lattice Comportamiento 
+
+```{r,fig.height=4,fig.width=10, fig.align='center'}
+p <- xyplot(Ozone ~ Wind, data = airquality)  # Nada pasa!
+print(p)  # Aparece el gráfico!
+```
+```{r,eval=FALSE}
+xyplot(Ozone ~ Wind, data = airquality)  ## Auto-impresión 
+```
+
+---
+
+## Lattice funciones panel
+
+- Las funciones lattice tienen ** funciones panel ** las cuales controlan lo que pasa dentro de cada panel del gráfico
+
+- El paquete *lattice* viene con funciones panel por defecto, pero se pueden implementar algunos cambios para lo que pasa dentro de cada panel 
+
+- Las funciones panel reciben las coordenadas x/y de los puntos en su panel
+
+
+---
+
+##  Lattice funciones panel
+
+```{r,fig.height=4,fig.width=8, fig.align='center'}
+set.seed(10)
+x <- rnorm(100)
+f <- rep(0:1, each = 50)
+y <- x + f - f * x + rnorm(100, sd = 0.5)
+f <- factor(f, labels = c("Group 1", "Group 2"))
+xyplot(y ~ x | f, layout = c(2, 1))  ## gráfico con 2 paneles
+```
+
+---
+
+## Lattice funciones panel
+
+```{r,fig.height=4, fig.width=12, fig.align='center'}
+xyplot(y ~ x | f, panel = function(x, y, ...) {
+       panel.xyplot(x, y, ...) ## primer llamado a la función panel por 'xyplot'
+       panel.abline(h = median(y), lty = 2)  ## Añade una linea horizontal en la media 
+})
+```
+
+---
+
+## Lattice funciones panel: Linea de regresión 
+
+```{r,fig.height=4, fig.width=12, fig.align='center'}
+xyplot(y ~ x | f, panel = function(x, y, ...) {
+               panel.xyplot(x, y, ...)  
+               panel.lmline(x, y, col = 2)  
+       })
+```
+
+---
+
+## Paneles en Lattice 
+
+```{r,echo=FALSE,cache=TRUE,fig.width=12, fig.align='center'}
+suppressMessages(suppressWarnings(library(lattice)))
+env <- readRDS("maacs_env.rds")
+env <- transform(env, MxNum = factor(MxNum))
+xyplot(log2(airmus) ~ VisitNum | MxNum, data = env, strip = FALSE, pch = 20, xlab = "Visit Number", ylab = expression(Log[2] * " Airborne Mouse Allergen"), main = "Mouse Allergen and Asthma Cohort Study (Baltimore City)")
+```
+
+---
+
+## ¿Que es ggplot2?
+
+- Grammar of Graphics representa una abstracción de gráficos ideas/objetos
+- Piense en "verbos", "sustantivos", "adjetivos" para gráficos
+- Aplica una nueva "teoría" de gráficas sobre la cual construir nuevos objetos 
+- "Acortar la distancia de la mente a la página"
+
+---
+
+## Grammar of Graphics
+
+### “In brief, the grammar tells us that a statistical graphic is a __mapping__ from data to __aesthetic__ attributes (colour, shape, size) of __geometric__ objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system”
+
+- Tomado de _ggplot2_ book
+
+---
+
+## Lo Básico: `qplot()`
+
+- Trabaja muy parecido a la función `plot()` en el sistema base
+- Toma los datos desde un _data_ _frame_, similar a _Lattice_
+- Los gráficos de componen de _aesthetics_ (size, shape, color) y _geoms_ (points, lines) 
+
+---
+
+## Lo Básico: `qplot()`
+
+- Los factores son importantes para indicar subconjuntos de datos 
+- `qplot()` oculta que pasa por debajo, lo que esta bien para la mayoría de las operaciones 
+- `ggplot()` es la función principal y es muy flexible para hacer cosas que `qplot()` no hace
+
+---
+
+## Dataset ejemplo 
+
+```{r}
+suppressMessages(suppressWarnings(library(ggplot2)))
+str(mpg)
+```
+
+---
+
+## ggplot2 “Hello, world!”
+
+```{r, fig.align='center', fig.height= 4, fig.width=9, message=FALSE, warning=FALSE}
+qplot(displ, hwy, data = mpg)
+```
+
+---
+
+## Modificar aesthetics
+
+```{r, fig.align='center', fig.height= 4, fig.width=9, message=FALSE, warning=FALSE}
+qplot(displ, hwy, data = mpg, color = drv)
+
+```
+
+---
+
+## Añadir un geom
+
+```{r, fig.align='center', fig.height= 4, fig.width=9, message=FALSE, warning=FALSE}
+qplot(displ, hwy, data = mpg, geom = c("point", "smooth"))
+
+```
+
+---
+
+## Histogramas
+
+```{r, fig.align='center', fig.height= 4, fig.width=9, message=FALSE, warning=FALSE}
+qplot(hwy, data = mpg, fill = drv)
+
+```
+
+---
+
+## Facets
+
+```{r, fig.align='center', fig.width=12, fig.height= 5, message=FALSE, warning=FALSE}
+suppressMessages(suppressWarnings(library(gridExtra)))
+p1 <- qplot(displ, hwy, data = mpg, facets = . ~ drv)
+p2 <- qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2)
+grid.arrange(p1, p2, ncol=2)
+```
+
+---
+## Ejemplo : Batata
+
+- Diseño factorial planteado en un estudio de investigación Ing. de Alimentos
+- Se busca  determinar diferencias en los tratamientos para las variables _Grasa_ y _Humedad_
+- Se tienen en cuenta los factores _Recubrimiento_ y _Temperatura_
+
+```{r, echo=FALSE}
+Batata <- read.csv2("BatataOK.csv", header = T)
+Batata <- transform(Batata, RECUBRIMIENTO = factor(RECUBRIMIENTO), 
+                    TIEMPO = factor(TIEMPO), TEMPERATURA=factor(TEMPERATURA))
+```
+
+
+---
+
+## Ejemplo: Batata
+
+```{r}
+str(Batata)
+```
+
+---
+
+## Histograma para la Humedad  
+
+```{r, fig.align='center', fig.height=4, fig.width=8, message=FALSE, warning=FALSE}
+qplot(HUMEDAD, data = Batata)
+```
+
+---
+
+## Histograma por grupos 
+
+```{r, fig.align='center', fig.height=4, fig.width=8, message=FALSE, warning=FALSE}
+qplot(GRASA, data = Batata, fill = TEMPERATURA)
+```
+
+---
+
+## Densidades 
+
+```{r, fig.align='center', fig.width=12, fig.height= 4.5, message=FALSE, warning=FALSE}
+p1 <- qplot(GRASA, data = Batata, geom = "density")
+p2 <- qplot(GRASA, data = Batata, geom = "density", color=TIEMPO);
+grid.arrange(p1, p2, ncol=2)
+```
+
+---
+
+## Scatterplots: Grasa vs. Humedad
+
+```{r, fig.align='center', fig.width=8, fig.height= 5, message=FALSE, warning=FALSE}
+qplot(GRASA, HUMEDAD, data = Batata)
+```
+
+---
+
+## Scatterplots: Grasa vs. Humedad
+
+```{r, fig.align='center', fig.width=14, fig.height= 4.5, message=FALSE, warning=FALSE}
+p2 <- qplot(GRASA, HUMEDAD, data = Batata, shape = RECUBRIMIENTO)
+p3 <- qplot(GRASA, HUMEDAD, data = Batata, color = RECUBRIMIENTO)
+grid.arrange(p2, p3, ncol=2)
+```
+
+---
+
+## Scatterplots: Grasa vs. Humedad
+
+```{r, fig.align='center', fig.width=9, fig.height= 5, message=FALSE, warning=FALSE}
+qplot(GRASA, HUMEDAD, data = Batata,color=TEMPERATURA,
+      geom = c("point", "smooth"), method = "lm")
+```
+
+---
+
+## Scatterplots: Grasa vs. Humedad
+
+```{r, fig.align='center', fig.width=12, fig.height= 5, message=FALSE, warning=FALSE}
+qplot(GRASA, HUMEDAD, data = Batata, geom = c("point", "smooth"),  
+      method = "lm", facets = . ~ TEMPERATURA)
+```
+
+---
+
+## Resumen de `qplot()`
+
+- La función `qplot()` es la análoga a `plot()` pero con muchas características integradas
+- Sintaxis en algún lugar entre base/lattice
+- Produce muy buenos gráficos, esencialmente listos para una publicación (si te gusta el diseño)
+- Difícil de personalizar (no te molestes, el uso de todo el potencial de ggplot2 complementa este caso)
+
+---
+
+## Recursos
+
+- The _ggplot2_ book por Hadley Wickham
+- The _R Graphics Cookbook_ por Winston Chang (ejemplos en el sistema base y ggplot2)
+- ggplot2 web site (http://ggplot2.org)
+- ggplot2 mailing list (http://goo.gl/OdW3uB), principalmente para desarrolladores
+
+---
+
+## Componentes básicos de un gráfico en ggplot2
+- Un _data frame_
+- _aesthetic mappings_: cómo a los datos se le asignan color, size 
+- _geoms_: objetos geometricos como points, lines, shapes. 
+- _facets_: Para gráficos condicionales. 
+- _stats_: Transformaciones estadísticas como binning, quantiles, smoothing. 
+- _scales_: qué escala de mapeo estético se utiliza (ejemplo: Hombre = red, Mujer = blue). 
+- _Sistema de coordenadas_ 
+
+---
+
+## Construyendo gráficos con ggplot2
+* Cuando construimos gráficos en ggplot2 (y no utilizamos qplot) el modelo “artist’s palette” puede ser la analogía más cercana
+* Los gráficos se construyen en capas
+  - Se grafican los datos
+  - Se hace una superposición tipo resumen
+  - Metadata y anotación 
+
+---
+
+## Ejemplo : Batata
+
+- Diseño factorial planteado en un estudio de investigación Ing. de Alimentos
+- Se busca  determinar diferencias en los tratamientos para las variables _Grasa_ y _Humedad_
+- Se tienen en cuenta los factores _Recubrimiento_ y _Temperatura_
+
+
+```{r, echo=FALSE}
+Batata <- read.csv2("BatataOK.csv", header = T)
+Batata <- transform(Batata, RECUBRIMIENTO = factor(RECUBRIMIENTO), TIEMPO = factor(TIEMPO), TEMPERATURA=factor(TEMPERATURA))
+```
+
+---
+
+## Gráfico básico 
+
+```{r, fig.align='center', fig.width=12, fig.height= 4, message=FALSE, warning=FALSE}
+qplot(GRASA, HUMEDAD, data = Batata, geom = c("point", "smooth"),  
+      method = "lm", facets = . ~ TEMPERATURA)
+```
+
+---
+
+## La construcción por capas
+
+```{r}
+head(Batata, 3)
+p <- ggplot(Batata, aes(GRASA, HUMEDAD))
+summary(p)
+```
+
+---
+
+## Sin gráfico aún !
+
+```{r, message=FALSE, warning=FALSE, fig.align='center', fig.height=4, fig.width=8}
+p <- ggplot(Batata, aes(GRASA, HUMEDAD))
+print(p)
+```
+
+---
+
+## Primer gráfico con capa point 
+
+```{r, fig.align='center', fig.width=8, fig.height= 4, message=FALSE, warning=FALSE}
+p <- ggplot(Batata, aes(GRASA, HUMEDAD))
+p + geom_point()
+```
+
+---
+
+## Añadiendo mas capas: Smooth
+
+```{r, fig.align='center', fig.width=8, fig.height= 4, message=FALSE, warning=FALSE}
+p <- ggplot(Batata, aes(GRASA, HUMEDAD))
+p + geom_point()+ geom_smooth(method = "lm")
+```
+
+---
+
+## Añadiendo mas capas: Facets
+
+```{r, fig.align='center', fig.width=12, fig.height= 4, message=FALSE, warning=FALSE}
+p <- ggplot(Batata, aes(GRASA, HUMEDAD))
+p + geom_point() + facet_grid(. ~ TEMPERATURA)+ geom_smooth(method = "lm")
+```
+
+---
+
+## Anotación
+- Labels: `xlab()`, `ylab()`, `labs()`, `ggtitle()`
+- Cada una de las funciones “geom” tiene opciones para modificar 
+- Para las cosas que sólo tienen sentido globalmente, use `theme()` 
+  - Ejemplo: `theme(legend.position = "none")` 
+- Se incluyen dos temas de apariencia estándar 
+  - `theme_gray()`: El tema por defecto (gray background)
+  - `theme_bw()`: Más stark/plain 
+
+---
+
+## Modificando Aesthetics
+
+```{r, fig.align='center', fig.width=12, fig.height= 4.5, message=FALSE, warning=FALSE}
+grid.arrange(p + geom_point(color = "steelblue", size = 4, alpha = 1/2), 
+             p + geom_point(aes(color = TEMPERATURA), size = 4, alpha = 1/2), ncol=2)
+```
+
+---
+
+## Modificando Labels
+
+```{r, fig.align='center', fig.width=9, fig.height= 4, message=FALSE, warning=FALSE}
+p + geom_point(aes(color = TEMPERATURA)) + 
+  labs(title='Datos del estudio Batata', x = "Grasa" , y = expression(Humedad[(g/kg)]))
+        
+```
+
+---
+
+## Personalizando el Smooth
+
+```{r, fig.align='center', fig.width=9, fig.height= 4, message=FALSE, warning=FALSE}
+p + geom_point(aes(color = TEMPERATURA), size = 2, alpha = 1/2) +
+        geom_smooth(size = 4, linetype = 3, method = "lm", se = FALSE)
+         
+```
+
+---
+
+## Cambiando el Theme
+
+```{r , fig.align='center', fig.width=9, fig.height= 5, message=FALSE, warning=FALSE}
+p + geom_point(aes(color = TEMPERATURA)) + theme_bw(base_family = "Times")
+```
+
+---
+
+## Gráfico Final 
+
+```{r  , echo=FALSE,  fig.align='center', fig.width=12, fig.height= 6, message=FALSE, warning=FALSE}
+g<-ggplot(Batata, aes(GRASA, HUMEDAD))
+
+## Add layers
+g + geom_point(alpha = 1/3) + 
+        facet_wrap(RECUBRIMIENTO ~ TEMPERATURA) + 
+        geom_smooth(method="lm", se=FALSE, col="steelblue") + 
+        theme_bw(base_family = "Avenir", base_size = 10) + 
+        labs(x = "Grasa") + 
+        labs(y = expression( Humedad [(g/kg)])) + 
+        labs(title = "Relación grasa - humedad en la interacción recubrimiento - temperatura ")
+
+```
+
+---
+
+## Gráfico Final - Código 
+
+```{r  , echo=TRUE, fig.show='hide', message=FALSE, warning=FALSE}
+g<-ggplot(Batata, aes(GRASA, HUMEDAD))
+
+## Add layers
+g + geom_point(alpha = 1/3) + 
+        facet_wrap(RECUBRIMIENTO ~ TEMPERATURA) + 
+        geom_smooth(method="lm", se=FALSE, col="steelblue") + 
+        theme_bw(base_family = "Avenir", base_size = 10) + 
+        labs(x = "Grasa") + 
+        labs(y = expression( Humedad [(g/kg)])) + 
+        labs(title = "Relación grasa - humedad en la interacción 
+             recubrimiento - temperatura ")
+
+```
+
+---
+
+## Resumen
+- ggplot2 es muy poderoso y flexible si aprendes  “The grammar” y los varios elementos que pueden ser modificados 
+- Muchos más tipos de gráficos pueden ser hechos; explora y pierdele un tiempo al paquete
+
+---
+
+## Recursos 
+
+- The _ggplot2_ book por Hadley Wickham
+- The _R Graphics Cookbook_ por Winston Chang (ejemplos en el sistema base y ggplot2)
+- ggplot2 web site (http://ggplot2.org)
+- ggplot2 mailing list (http://goo.gl/OdW3uB), principalmente para desarrolladores
+
+---
+
+## Motivación gráficos interactivos
+
+```{r echo = F, results = 'asis', message=FALSE, warning=FALSE}
+suppressMessages(suppressWarnings(require(rCharts)))
+haireye = as.data.frame(HairEyeColor)
+n1 <- nPlot(Freq ~ Hair, group = 'Eye', type = 'multiBarChart',
+  data = subset(haireye, Sex == 'Male')
+)
+n1$print('chart1')
+```
+
+--- 
+
+## Motivación gráficos interactivos
+
+```{r fig.align='center', message = FALSE, results = 'asis', comment = NA, echo = F , }
+suppressMessages(suppressWarnings(require(googleVis)))
+M1 = gvisMotionChart(Fruits, idvar = 'Fruit', timevar = "Year", options=list(width=600, height=400))
+print(M1, tag = 'chart')
+```
+
+---
+
+# Motivación gráficos interactivos
+
+```{r opts.label = 'shiny'}
+slidifyUI(
+sidebarLayout(        
+  sidebarPanel(
+    selectInput('sex', 'Choose Sex', c('Male', 'Female'), width = '100px'),
+    selectInput('type', 'Choose Type',
+      c('multiBarChart', 'multiBarHorizontalChart'), width = '200px'
+    )
+  ),
+  mainPanel(
+    tags$div(id = 'nvd3plot', class='shiny-html-output nvd3 rChart')
+  ),position = "left", fluid = FALSE
+)
+  )
+```
+
+

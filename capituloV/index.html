@@ -1,0 +1,2562 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Visualización de datos en R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Visualización de datos en R">
+  <meta name="author" content="Kevin Pérez C, Profesor Auxiliar">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/interactive/css/aceeditor.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/unicordoba3.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Visualización de datos en R</h1>
+    <h2></h2>
+    <p>Kevin Pérez C, Profesor Auxiliar<br/>Departamento de Matemáticas y Estadística - Universidad de Córdoba</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Principios del análisis gráfico</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Principio 1: Mostrar comparaciones</p>
+
+<ul>
+<li>La evidencia de una hipótesis siempre es <strong><em>relativa</em></strong> con respecto a una hipótesis</li>
+<li>Siempre pregunta &quot;¿Comparado con que?&quot;</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Mostrar comparaciones</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Mostrar comparaciones</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Principios del análisis gráfico</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Principio 1: Mostrar comparaciones</p>
+
+<ul>
+<li>La evidencia de una hipótesis siempre es <em>relativa</em> con respecto a otra hipótesis</li>
+<li>Siempre pregunta &quot;¿Comparado con que?&quot;</li>
+</ul></li>
+<li><p>Principio 2: Mostrar causalidad, el mecanismo, la explicación, la estructura sistemática</p>
+
+<ul>
+<li>¿Cuál es su marco causal para pensar en una pregunta?</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Mostrar Causalidad</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Principios del análisis gráfico</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Principio 1: Mostrar comparaciones</p></li>
+<li><p>La evidencia de una hipótesis siempre es <em>relativa</em> con respecto a otra hipótesis</p>
+
+<ul>
+<li>Siempre pregunta &quot;¿Comparado con que?&quot;</li>
+</ul></li>
+<li><p>Principio 2: Mostrar causalidad, el mecanismo, la explicación, la estructura sistemática</p>
+
+<ul>
+<li>¿Cuál es su marco causal para pensar en una pregunta?</li>
+</ul></li>
+<li><p>Principio 3: Mostrar datos multivariados</p>
+
+<ul>
+<li>Multivariado = más de 2 variables</li>
+<li>El mundo real es multivariado</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Mostrar datos multivariados</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Mostrar datos multivariados</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Principios del análisis gráfico</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Principio 4: Integración de evidencias</p>
+
+<ul>
+<li>Integrar palabras, números, imágenes, diagramas</li>
+<li>Gráficos que deben hacer uso de muchos modos de presentación de datos</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Integrar diferentes formas de evidencias</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class=center src= assets/img/img1.png height=450/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Principios del análisis gráfico</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Principio 4: Integración de evidencias</p>
+
+<ul>
+<li>Integrar palabras, números, imágenes, diagramas</li>
+<li>Gráficos que deben hacer uso de muchos modos de presentación de datos</li>
+</ul></li>
+<li><p>Principio 5: Describir y documentar la evidencia con 
+las adecuadas etiquetas, escalas, fuentes, etc.</p>
+
+<ul>
+<li>Un gráfico de datos debe contar una historia completa que sea creíble</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Principios del análisis gráfico</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Principio 4: Integración de evidencias</p>
+
+<ul>
+<li>Integrar palabras, números, imágenes, diagramas</li>
+<li>Gráficos que deben hacer uso de muchos modos de presentación de datos</li>
+</ul></li>
+<li><p>Principio 5: Describir y documentar la evidencia con 
+las adecuadas etiquetas, escalas, fuentes, etc.</p>
+
+<ul>
+<li>Un gráfico de datos debe contar una historia completa que sea creíble</li>
+</ul></li>
+<li><p>Principio 6: El contenido manda</p>
+
+<ul>
+<li>Representaciones analíticas en última instancia, suben o bajan de calidad 
+debido a la pertinencia e integridad de su contenido.<br></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Resumen</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Principio 1: Mostrar comparaciones</li>
+<li>Principio 2: Mostrar la causalidad, el mecanismo, la explicación</li>
+<li>Principio 3: Mostrar datos multivariados</li>
+<li>Principio 4: Integrar diferentes formas de evidencias </li>
+<li>Principio 5: Describir y documentar la evidencia</li>
+<li>Principle 6: El contenido manda</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>El sistema base de gráficos</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Modelo &quot;Canvas&quot;</li>
+<li>Comienza con un lienzo en blanco y construye el gráfico desde allí </li>
+<li>Comienza con una función <code>plot</code> (o similar)
+-Utiliza funciones de anotación (segundo nivel) para añadir/modificar capas del gráfico (<code>text</code>, <code>lines</code>, <code>points</code>, <code>axis</code>)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>El sistema base de gráficos</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Tiene la ventaja de que permite la construcción de gráficos por capas extremadamente detallados </p></li>
+<li><p>No puedes editar el código una vez hayas empezado (p.e. ajustar los margenes)</p></li>
+<li><p>Dificulta la trasmisión de código </p></li>
+<li><p>Los gráficos se convierten en una serie de comandos </p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Gráfico Base</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>El sitema Lattice</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Los gráficos son creados con una llamada a una sola función (<code>xyplot</code>, <code>bwplot</code>, etc.)</p></li>
+<li><p>Es mucho más versátil para gráficos condicionales: Donde se miran relaciones entre variable en presencia de una variable auxiliar (factor)</p></li>
+<li><p>Cosas como margenes o espaciado se generan automáticamente debido a que el gráfico se genera en una sola función </p></li>
+<li><p>Excelente para mostrar gráficos en una sola ventana </p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>El sitema Lattice</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>A veces no es tan cómodo crear un gráfico en una sola llamada a una función</p></li>
+<li><p>Las anotaciones (funciones de bajo nivel) no son tan intuitivas </p></li>
+<li><p>El uso de funciones panel y subíndices son difíciles de manejar, requiere una buena preparación </p></li>
+<li><p>No se puede adicionar nada al gráfico una vez se creo</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Gráfico Lattice</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>El sistema ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Divide la diferencia entre el sistema base y lattice de muchas formas</p></li>
+<li><p>Trata de forma automática con el espaciado, texto, títulos pero de igual forma permite añadir capas al gráfico mediante el operador adición <code>+</code></p></li>
+<li><p>De manera visual se comporta parecido a lattice pero generalmente es más intuitivo y fácil de utilizar</p></li>
+<li><p>Por defecto escoge muchas opciones del gráfico pero permite un alto grado de personalización</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Gráfico ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Que es un dispositivo gráfico?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Un dispositivo gráfico es algo donde se puede almacenar un gráfico</p>
+
+<ul>
+<li>Una ventana en tu maquina (<em>screen device</em>)</li>
+<li>Un archivo PDF (<em>file device</em>)</li>
+<li>Un archivo PNG o JPEG (<em>file device</em>)</li>
+<li>Un archivo vector escalable de gráficos (SVG) (<em>file device</em>)</li>
+</ul></li>
+<li><p>Cuando haces un gráfico R, ha sido enviado a un dispositivo gráfico en especifico</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Como se crea un gráfico en R?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Existen dos formas para gráficar. La primera es la más común:</p>
+
+<ol>
+<li><p>Llamar a la función que gráfica como <code>plot</code>, <code>xyplot</code>, o <code>qplot</code></p></li>
+<li><p>El gráfico aparece en el dispositivo de pantalla</p></li>
+<li><p>Haga anotaciones si lo considera necesario </p></li>
+<li><p>Disfrute de su gráfico </p></li>
+</ol>
+
+<pre><code class="r">library(datasets)
+with(faithful, plot(eruptions, 
+                    waiting))  ## Hace que el gráfico aparezca en la pantalla 
+title(main = &quot;Old Faithful Geyser data&quot;)  ## Añade un titulo (Anotación)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Como se crea un gráfico en R?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>El segundo método es la más común cuando se trata de utilizar dispositivos tipo archivos.</p>
+
+<ol>
+<li><p>Explicitamente lance un dispositivo gráfico</p></li>
+<li><p>Llame la función que realiza el gráfico (Nota: si esta utilizando un dispositivo gráfico mediante un archivo el gráfico no aparecerá en su pantalla)</p></li>
+<li><p>Realice anotaciones si lo considera necesario</p></li>
+<li><p>Explicitamente cierre el dispositivo gráfico con la función <code>dev.off()</code> (es extremadamente importante!)</p></li>
+</ol>
+
+<pre><code class="r">pdf(file = &quot;myplot.pdf&quot;)  ## Abre el dispositivo PDF; crea &#39;myplot.pdf&#39; en el dt
+## Crea el gráfico y lo envia al archivo 
+with(faithful, plot(eruptions, waiting))  
+title(main = &quot;Old Faithful Geyser data&quot;)  ## Añade el titulo; nada en la pantalla
+dev.off()  ## Cierra el archivo PDF 
+## Ahora puede ver el archivo &#39;myplot.pdf&#39; en su computadora 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Gráficos Base</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Los gráficos de base se utilizan con mayor frecuencia y son muy potentes para crear gráficos en 2-D.</p>
+
+<ul>
+<li><p>Existen dos fases para crear un gráfico base </p>
+
+<ul>
+<li>Inicializar un gráfico (función plot)</li>
+<li>Anotar (añadir capas) a un gráfico existente</li>
+</ul></li>
+<li><p>Llamar a la función <code>plot(x, y)</code> o <code>hist(x)</code> lanzara le dispositivo gráfico </p></li>
+<li><p>Si los argumentos de <code>plot</code> no son de alguna clase especial, entonces se llama al método <em>default</em>  de<code>plot</code>; Esta función tiene muchos argumentos, permitiéndole definir el título, la etiqueta del eje x, la etiqueta del eje y, etc.</p></li>
+<li><p>El sistema de gráficos base tiene <em>muchos</em> parámetros que se pueden establecer y ajustar; Estos parámetros están documentados en <code>?Par</code>.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Gráficos Base: Histograma</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">suppressMessages(suppressWarnings(library(datasets)))
+hist(airquality$Ozone)  ## Dibuja un gráfico
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>Gráficos Base: Scatterplot</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">suppressMessages(suppressWarnings(library(datasets)))
+with(airquality, plot(Wind, Ozone))
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Gráficos Base: Boxplot</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">suppressMessages(suppressWarnings(library(datasets))) ;data(airquality)
+airquality &lt;- transform(airquality, Month = factor(Month))
+boxplot(Ozone ~ Month, airquality, xlab = &quot;Month&quot;, ylab = &quot;Ozone (ppb)&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Algunos parámetros importantes</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Muchas funciones del sistema base comparten un conjunto de parámetros. Éstos son algunos de los principales:</p>
+
+<ul>
+<li><p><code>pch</code>: símbolo a gráficar en puntos (un circulo por defecto)</p></li>
+<li><p><code>lty</code>: el tipo de linea (una linea solida por defecto), puede ser discontinua, punteada, etc.</p></li>
+<li><p><code>lwd</code>: el ancho de la linea, especificado como un entero </p></li>
+<li><p><code>col</code>: el color a gráficar, especificado como un número, carácter, o código hexadecimal; la función <code>colors()</code> regresa un vector de nombres de colores </p></li>
+<li><p><code>xlab</code>: Cadena de caracteres para la etiqueta del eje x</p></li>
+<li><p><code>ylab</code>: Cadena de caracteres para la etiqueta del eje y</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>Algunos parámetros importantes</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>La función <code>par()</code> se utiliza para especificar los parámetros <strong><em>globales</em></strong> de gráficos  que afectan a todas las gráficas de una sesión en R. Estos parámetros se pueden sobreescribir cuando se especifican como argumentos a funciones de gráficos específicas.</p>
+
+<ul>
+<li><code>las</code>: La orientación de las etiquetas del eje en el gráfico</li>
+<li><code>bg</code>: El color de fondo</li>
+<li><code>mar</code>: El tamaño del margen</li>
+<li><code>oma</code>: El tamaño del margen externo (por defecto es 0 en todos los lados)</li>
+<li><code>mfrow</code>: Número de gráficos por fila, columna (gráficos por filas)</li>
+<li><code>mfcol</code>: Número de gráficos por fila, columna (gráficos por columnas)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>Algunos parámetros importantes</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Valores por defecto para algunos parámetros de gráficos </p>
+
+<pre><code class="r">par(&quot;lty&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;solid&quot;
+</code></pre>
+
+<pre><code class="r">par(&quot;col&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;black&quot;
+</code></pre>
+
+<pre><code class="r">par(&quot;pch&quot;)
+</code></pre>
+
+<pre><code>## [1] 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>Algunos parámetros importantes</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Valores por defecto para algunos parámetros de gráficos </p>
+
+<pre><code class="r">par(&quot;bg&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;white&quot;
+</code></pre>
+
+<pre><code class="r">par(&quot;mar&quot;)
+</code></pre>
+
+<pre><code>## [1] 5.1 4.1 4.1 2.1
+</code></pre>
+
+<pre><code class="r">par(&quot;mfrow&quot;)
+</code></pre>
+
+<pre><code>## [1] 1 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>Funciones de Gráficos Base</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p><code>plot</code>: Hace un diagrama de dispersión u otro tipo de gráfico dependiendo de la clase del objeto que se está utilizando</p></li>
+<li><p><code>lines</code>: Añade líneas a un gráfico, dado un vector <code>x</code> de valores  y un correspondiente vector de valores <code>y</code> (o una matriz de 2 columnas); Esta función sólo conecta los puntos</p></li>
+<li><p><code>points</code>: Añade puntos a un gráfico</p></li>
+<li><p><code>text</code>: Añade etiquetas de texto a un gráfico utilizando coordenadas <code>x</code>, <code>y</code> especificadas</p></li>
+<li><p><code>title</code>: Añade anotaciones a las etiquetas del eje <code>x</code>, <code>y</code>, título, subtítulo, margen externo </p></li>
+<li><p><code>mtext</code>: Añade texto arbitrario a los márgenes (internos o externos) del gráfico</p></li>
+<li><p><code>axis</code>: Añade etiquetas/etiquetas de eje</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <hgroup>
+    <h2>Gráfico Base con anotación</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">suppressMessages(suppressWarnings(library(datasets)))
+with(airquality, plot(Wind, Ozone))
+title(main = &quot;Ozone and Wind in New York City&quot;)  ## Add a title
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>Gráfico Base con anotación</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">suppressMessages(suppressWarnings(library(datasets)))
+with(airquality, plot(Wind, Ozone, main = &quot;Ozone and Wind in New York City&quot;))
+with(subset(airquality, Month == 5), points(Wind, Ozone, col = &quot;blue&quot;))
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <h2>Gráfico Base con anotación</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">with(airquality, plot(Wind, Ozone, main = &quot;Ozone and Wind in New York City&quot;, type = &quot;n&quot;))
+with(subset(airquality, Month == 5), points(Wind, Ozone, col = &quot;blue&quot;))
+with(subset(airquality, Month != 5), points(Wind, Ozone, col = &quot;red&quot;))
+legend(&quot;topright&quot;, pch = 1, col = c(&quot;blue&quot;, &quot;red&quot;), legend = c(&quot;May&quot;, &quot;Other Months&quot;))
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-37" style="background:;">
+  <hgroup>
+    <h2>Multiples gráficos Base</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">par(mfrow = c(1, 2))
+with(airquality, {
+    plot(Wind, Ozone, main = &quot;Ozone and Wind&quot;)
+    plot(Solar.R, Ozone, main = &quot;Ozone and Solar Radiation&quot;)
+})
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-38" style="background:;">
+  <hgroup>
+    <h2>Multiples gráficos Base</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
+with(airquality, {
+    plot(Wind, Ozone, main = &quot;Ozone and Wind&quot;)
+    plot(Solar.R, Ozone, main = &quot;Ozone and Solar Radiation&quot;)
+    plot(Temp, Ozone, main = &quot;Ozone and Temperature&quot;)
+    mtext(&quot;Ozone and Weather in New York City&quot;, outer = TRUE)
+})
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-39" style="background:;">
+  <hgroup>
+    <h2>Sistema de gráficos lattice</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>El sistema de gráficos lattice se implemento utilizando los siguientes paquetes:</p>
+
+<ul>
+<li><p><em>lattice</em>: contiene el código para producir gráficos tipo <em>trellis</em> el cual es independiente del sistema base, incluye funciones como: <code>xyplot</code>, <code>bwplot</code>, <code>levelplot</code></p></li>
+<li><p><em>grid</em>: implementa diferentes sistemas gráficos independientes del sistema base, el paquete <em>lattice</em> se construyó con base a <em>grid</em></p></li>
+<li><p>El sistema lattice no tiene el sistema de dos fases, aspecto que lo separa bastante del sistema base </p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h2>Funciones lattice</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>xyplot</code>: esta es la función principal, crea diagrama de puntos </li>
+<li><code>bwplot</code>: gráficos box-and-whiskers, (“boxplots”)</li>
+<li><code>histogram</code>: histogramas</li>
+<li><code>stripplot</code>: como un boxplot pero con puntos </li>
+<li><code>dotplot</code>: gráficos de puntos en forma de &quot;violín&quot;</li>
+<li><code>splom</code>: scatterplot matrix; como <code>pairs</code> en el sistema base</li>
+<li><code>levelplot</code>, <code>contourplot</code>: para graficar datos de &quot;imágenes&quot;</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-41" style="background:;">
+  <hgroup>
+    <h2>Funciones lattice</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Las funciones de lattice generalmente toman una formula como primer argumento, 
+de la siguiente forma:</p>
+
+<pre><code class="r">xyplot(y ~ x | f * g, data)
+</code></pre>
+
+<ul>
+<li><p>Se utiliza la <em>notación de formula</em>, debido al <code>~</code>.</p></li>
+<li><p>Al lado izquierdo de <code>~</code> esta la variable del eje y, en el lado derecho esta la variable del eje x</p></li>
+<li><p>f y g son <em>variables condicionales</em> — son opcionales </p>
+
+<ul>
+<li>el <code>*</code> indica interacción entre las variables </li>
+</ul></li>
+<li><p>El segundo argumento es el data frame o lista del cual se obtendrán las variables de la formula </p></li>
+<li><p>Sino se especifica ningún otro argumento, se establecerán el resto de valores por defecto.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-42" style="background:;">
+  <hgroup>
+    <h2>Gráficos Lattice</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">suppressMessages(suppressWarnings(library(lattice)))
+suppressMessages(suppressWarnings(library(datasets)))
+xyplot(Ozone ~ Wind, data = airquality)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-43" style="background:;">
+  <hgroup>
+    <h2>Gráficos Lattice</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">suppressMessages(suppressWarnings(library(lattice)))
+suppressMessages(suppressWarnings(library(datasets)))
+airquality &lt;- transform(airquality, Month = factor(Month)) 
+xyplot(Ozone ~ Wind | Month, data = airquality, layout = c(5, 1))
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-44" style="background:;">
+  <hgroup>
+    <h2>Lattice Comportamiento</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p &lt;- xyplot(Ozone ~ Wind, data = airquality)  # Nada pasa!
+print(p)  # Aparece el gráfico!
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" /></p>
+
+<pre><code class="r">xyplot(Ozone ~ Wind, data = airquality)  ## Auto-impresión 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-45" style="background:;">
+  <hgroup>
+    <h2>Lattice funciones panel</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Las funciones lattice tienen ** funciones panel ** las cuales controlan lo que pasa dentro de cada panel del gráfico</p></li>
+<li><p>El paquete <em>lattice</em> viene con funciones panel por defecto, pero se pueden implementar algunos cambios para lo que pasa dentro de cada panel </p></li>
+<li><p>Las funciones panel reciben las coordenadas x/y de los puntos en su panel</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-46" style="background:;">
+  <hgroup>
+    <h2>Lattice funciones panel</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">set.seed(10)
+x &lt;- rnorm(100)
+f &lt;- rep(0:1, each = 50)
+y &lt;- x + f - f * x + rnorm(100, sd = 0.5)
+f &lt;- factor(f, labels = c(&quot;Group 1&quot;, &quot;Group 2&quot;))
+xyplot(y ~ x | f, layout = c(2, 1))  ## gráfico con 2 paneles
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-47" style="background:;">
+  <hgroup>
+    <h2>Lattice funciones panel</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">xyplot(y ~ x | f, panel = function(x, y, ...) {
+       panel.xyplot(x, y, ...) ## primer llamado a la función panel por &#39;xyplot&#39;
+       panel.abline(h = median(y), lty = 2)  ## Añade una linea horizontal en la media 
+})
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-26-1.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-48" style="background:;">
+  <hgroup>
+    <h2>Lattice funciones panel: Linea de regresión</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">xyplot(y ~ x | f, panel = function(x, y, ...) {
+               panel.xyplot(x, y, ...)  
+               panel.lmline(x, y, col = 2)  
+       })
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-49" style="background:;">
+  <hgroup>
+    <h2>Paneles en Lattice</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-28-1.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-50" style="background:;">
+  <hgroup>
+    <h2>¿Que es ggplot2?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Grammar of Graphics representa una abstracción de gráficos ideas/objetos</li>
+<li>Piense en &quot;verbos&quot;, &quot;sustantivos&quot;, &quot;adjetivos&quot; para gráficos</li>
+<li>Aplica una nueva &quot;teoría&quot; de gráficas sobre la cual construir nuevos objetos </li>
+<li>&quot;Acortar la distancia de la mente a la página&quot;</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-51" style="background:;">
+  <hgroup>
+    <h2>Grammar of Graphics</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>“In brief, the grammar tells us that a statistical graphic is a <strong>mapping</strong> from data to <strong>aesthetic</strong> attributes (colour, shape, size) of <strong>geometric</strong> objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system”</h3>
+
+<ul>
+<li>Tomado de <em>ggplot2</em> book</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-52" style="background:;">
+  <hgroup>
+    <h2>Lo Básico: <code>qplot()</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Trabaja muy parecido a la función <code>plot()</code> en el sistema base</li>
+<li>Toma los datos desde un <em>data</em> <em>frame</em>, similar a <em>Lattice</em></li>
+<li>Los gráficos de componen de <em>aesthetics</em> (size, shape, color) y <em>geoms</em> (points, lines) </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-53" style="background:;">
+  <hgroup>
+    <h2>Lo Básico: <code>qplot()</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Los factores son importantes para indicar subconjuntos de datos </li>
+<li><code>qplot()</code> oculta que pasa por debajo, lo que esta bien para la mayoría de las operaciones </li>
+<li><code>ggplot()</code> es la función principal y es muy flexible para hacer cosas que <code>qplot()</code> no hace</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-54" style="background:;">
+  <hgroup>
+    <h2>Dataset ejemplo</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">suppressMessages(suppressWarnings(library(ggplot2)))
+str(mpg)
+</code></pre>
+
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    234 obs. of  11 variables:
+##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...
+##  $ model       : chr  &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...
+##  $ displ       : num  1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
+##  $ year        : int  1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...
+##  $ cyl         : int  4 4 4 4 6 6 6 4 4 4 ...
+##  $ trans       : chr  &quot;auto(l5)&quot; &quot;manual(m5)&quot; &quot;manual(m6)&quot; &quot;auto(av)&quot; ...
+##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...
+##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...
+##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...
+##  $ fl          : chr  &quot;p&quot; &quot;p&quot; &quot;p&quot; &quot;p&quot; ...
+##  $ class       : chr  &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; ...
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-55" style="background:;">
+  <hgroup>
+    <h2>ggplot2 “Hello, world!”</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qplot(displ, hwy, data = mpg)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-30-1.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-56" style="background:;">
+  <hgroup>
+    <h2>Modificar aesthetics</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qplot(displ, hwy, data = mpg, color = drv)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-31-1.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-57" style="background:;">
+  <hgroup>
+    <h2>Añadir un geom</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qplot(displ, hwy, data = mpg, geom = c(&quot;point&quot;, &quot;smooth&quot;))
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-32-1.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-58" style="background:;">
+  <hgroup>
+    <h2>Histogramas</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qplot(hwy, data = mpg, fill = drv)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-59" style="background:;">
+  <hgroup>
+    <h2>Facets</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">suppressMessages(suppressWarnings(library(gridExtra)))
+p1 &lt;- qplot(displ, hwy, data = mpg, facets = . ~ drv)
+p2 &lt;- qplot(hwy, data = mpg, facets = drv ~ ., binwidth = 2)
+grid.arrange(p1, p2, ncol=2)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-34-1.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-60" style="background:;">
+  <hgroup>
+    <h2>Ejemplo : Batata</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Diseño factorial planteado en un estudio de investigación Ing. de Alimentos</li>
+<li>Se busca  determinar diferencias en los tratamientos para las variables <em>Grasa</em> y <em>Humedad</em></li>
+<li>Se tienen en cuenta los factores <em>Recubrimiento</em> y <em>Temperatura</em></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-61" style="background:;">
+  <hgroup>
+    <h2>Ejemplo: Batata</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">str(Batata)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    108 obs. of  6 variables:
+##  $ RECUBRIMIENTO: Factor w/ 2 levels &quot;0&quot;,&quot;0.5&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ TEMPERATURA  : Factor w/ 3 levels &quot;150&quot;,&quot;170&quot;,&quot;190&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ TIEMPO       : Factor w/ 6 levels &quot;30&quot;,&quot;60&quot;,&quot;120&quot;,..: 1 1 1 2 2 2 3 3 3 4 ...
+##  $ REP          : int  1 2 3 1 2 3 1 2 3 1 ...
+##  $ HUMEDAD      : num  0.0774 0.0718 0.07 0.1363 0.1323 ...
+##  $ GRASA        : num  0.022 0.023 0.0213 0.0458 0.0456 0.0458 0.0499 0.0519 0.0503 0.0562 ...
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-62" style="background:;">
+  <hgroup>
+    <h2>Histograma para la Humedad</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qplot(HUMEDAD, data = Batata)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-37-1.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-63" style="background:;">
+  <hgroup>
+    <h2>Histograma por grupos</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qplot(GRASA, data = Batata, fill = TEMPERATURA)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-64" style="background:;">
+  <hgroup>
+    <h2>Densidades</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p1 &lt;- qplot(GRASA, data = Batata, geom = &quot;density&quot;)
+p2 &lt;- qplot(GRASA, data = Batata, geom = &quot;density&quot;, color=TIEMPO);
+grid.arrange(p1, p2, ncol=2)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-65" style="background:;">
+  <hgroup>
+    <h2>Scatterplots: Grasa vs. Humedad</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qplot(GRASA, HUMEDAD, data = Batata)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-66" style="background:;">
+  <hgroup>
+    <h2>Scatterplots: Grasa vs. Humedad</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p2 &lt;- qplot(GRASA, HUMEDAD, data = Batata, shape = RECUBRIMIENTO)
+p3 &lt;- qplot(GRASA, HUMEDAD, data = Batata, color = RECUBRIMIENTO)
+grid.arrange(p2, p3, ncol=2)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-67" style="background:;">
+  <hgroup>
+    <h2>Scatterplots: Grasa vs. Humedad</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qplot(GRASA, HUMEDAD, data = Batata,color=TEMPERATURA,
+      geom = c(&quot;point&quot;, &quot;smooth&quot;), method = &quot;lm&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-68" style="background:;">
+  <hgroup>
+    <h2>Scatterplots: Grasa vs. Humedad</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qplot(GRASA, HUMEDAD, data = Batata, geom = c(&quot;point&quot;, &quot;smooth&quot;),  
+      method = &quot;lm&quot;, facets = . ~ TEMPERATURA)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-69" style="background:;">
+  <hgroup>
+    <h2>Resumen de <code>qplot()</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>La función <code>qplot()</code> es la análoga a <code>plot()</code> pero con muchas características integradas</li>
+<li>Sintaxis en algún lugar entre base/lattice</li>
+<li>Produce muy buenos gráficos, esencialmente listos para una publicación (si te gusta el diseño)</li>
+<li>Difícil de personalizar (no te molestes, el uso de todo el potencial de ggplot2 complementa este caso)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-70" style="background:;">
+  <hgroup>
+    <h2>Recursos</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The <em>ggplot2</em> book por Hadley Wickham</li>
+<li>The <em>R Graphics Cookbook</em> por Winston Chang (ejemplos en el sistema base y ggplot2)</li>
+<li>ggplot2 web site (<a href="http://ggplot2.org">http://ggplot2.org</a>)</li>
+<li>ggplot2 mailing list (<a href="http://goo.gl/OdW3uB">http://goo.gl/OdW3uB</a>), principalmente para desarrolladores</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-71" style="background:;">
+  <hgroup>
+    <h2>Componentes básicos de un gráfico en ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Un <em>data frame</em></li>
+<li><em>aesthetic mappings</em>: cómo a los datos se le asignan color, size </li>
+<li><em>geoms</em>: objetos geometricos como points, lines, shapes. </li>
+<li><em>facets</em>: Para gráficos condicionales. </li>
+<li><em>stats</em>: Transformaciones estadísticas como binning, quantiles, smoothing. </li>
+<li><em>scales</em>: qué escala de mapeo estético se utiliza (ejemplo: Hombre = red, Mujer = blue). </li>
+<li><em>Sistema de coordenadas</em> </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-72" style="background:;">
+  <hgroup>
+    <h2>Construyendo gráficos con ggplot2</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Cuando construimos gráficos en ggplot2 (y no utilizamos qplot) el modelo “artist’s palette” puede ser la analogía más cercana</li>
+<li>Los gráficos se construyen en capas
+
+<ul>
+<li>Se grafican los datos</li>
+<li>Se hace una superposición tipo resumen</li>
+<li>Metadata y anotación </li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-73" style="background:;">
+  <hgroup>
+    <h2>Ejemplo : Batata</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Diseño factorial planteado en un estudio de investigación Ing. de Alimentos</li>
+<li>Se busca  determinar diferencias en los tratamientos para las variables <em>Grasa</em> y <em>Humedad</em></li>
+<li>Se tienen en cuenta los factores <em>Recubrimiento</em> y <em>Temperatura</em></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-74" style="background:;">
+  <hgroup>
+    <h2>Gráfico básico</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qplot(GRASA, HUMEDAD, data = Batata, geom = c(&quot;point&quot;, &quot;smooth&quot;),  
+      method = &quot;lm&quot;, facets = . ~ TEMPERATURA)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-45-1.png" title="plot of chunk unnamed-chunk-45" alt="plot of chunk unnamed-chunk-45" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-75" style="background:;">
+  <hgroup>
+    <h2>La construcción por capas</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">head(Batata, 3)
+</code></pre>
+
+<pre><code>##   RECUBRIMIENTO TEMPERATURA TIEMPO REP HUMEDAD  GRASA
+## 1           0.5         150     30   1  0.0774 0.0220
+## 2           0.5         150     30   2  0.0718 0.0230
+## 3           0.5         150     30   3  0.0700 0.0213
+</code></pre>
+
+<pre><code class="r">p &lt;- ggplot(Batata, aes(GRASA, HUMEDAD))
+summary(p)
+</code></pre>
+
+<pre><code>## data: RECUBRIMIENTO, TEMPERATURA, TIEMPO, REP, HUMEDAD, GRASA
+##   [108x6]
+## mapping:  x = GRASA, y = HUMEDAD
+## faceting: &lt;ggproto object: Class FacetNull, Facet, gg&gt;
+##     compute_layout: function
+##     draw_back: function
+##     draw_front: function
+##     draw_labels: function
+##     draw_panels: function
+##     finish_data: function
+##     init_scales: function
+##     map_data: function
+##     params: list
+##     setup_data: function
+##     setup_params: function
+##     shrink: TRUE
+##     train_scales: function
+##     vars: function
+##     super:  &lt;ggproto object: Class FacetNull, Facet, gg&gt;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-76" style="background:;">
+  <hgroup>
+    <h2>Sin gráfico aún !</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p &lt;- ggplot(Batata, aes(GRASA, HUMEDAD))
+print(p)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-47-1.png" title="plot of chunk unnamed-chunk-47" alt="plot of chunk unnamed-chunk-47" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-77" style="background:;">
+  <hgroup>
+    <h2>Primer gráfico con capa point</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p &lt;- ggplot(Batata, aes(GRASA, HUMEDAD))
+p + geom_point()
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-48-1.png" title="plot of chunk unnamed-chunk-48" alt="plot of chunk unnamed-chunk-48" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-78" style="background:;">
+  <hgroup>
+    <h2>Añadiendo mas capas: Smooth</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p &lt;- ggplot(Batata, aes(GRASA, HUMEDAD))
+p + geom_point()+ geom_smooth(method = &quot;lm&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-49-1.png" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-79" style="background:;">
+  <hgroup>
+    <h2>Añadiendo mas capas: Facets</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p &lt;- ggplot(Batata, aes(GRASA, HUMEDAD))
+p + geom_point() + facet_grid(. ~ TEMPERATURA)+ geom_smooth(method = &quot;lm&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-50-1.png" title="plot of chunk unnamed-chunk-50" alt="plot of chunk unnamed-chunk-50" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-80" style="background:;">
+  <hgroup>
+    <h2>Anotación</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Labels: <code>xlab()</code>, <code>ylab()</code>, <code>labs()</code>, <code>ggtitle()</code></li>
+<li>Cada una de las funciones “geom” tiene opciones para modificar </li>
+<li>Para las cosas que sólo tienen sentido globalmente, use <code>theme()</code> 
+
+<ul>
+<li>Ejemplo: <code>theme(legend.position = &quot;none&quot;)</code> </li>
+</ul></li>
+<li>Se incluyen dos temas de apariencia estándar 
+
+<ul>
+<li><code>theme_gray()</code>: El tema por defecto (gray background)</li>
+<li><code>theme_bw()</code>: Más stark/plain </li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-81" style="background:;">
+  <hgroup>
+    <h2>Modificando Aesthetics</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">grid.arrange(p + geom_point(color = &quot;steelblue&quot;, size = 4, alpha = 1/2), 
+             p + geom_point(aes(color = TEMPERATURA), size = 4, alpha = 1/2), ncol=2)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-51-1.png" title="plot of chunk unnamed-chunk-51" alt="plot of chunk unnamed-chunk-51" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-82" style="background:;">
+  <hgroup>
+    <h2>Modificando Labels</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p + geom_point(aes(color = TEMPERATURA)) + 
+  labs(title=&#39;Datos del estudio Batata&#39;, x = &quot;Grasa&quot; , y = expression(Humedad[(g/kg)]))
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-52-1.png" title="plot of chunk unnamed-chunk-52" alt="plot of chunk unnamed-chunk-52" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-83" style="background:;">
+  <hgroup>
+    <h2>Personalizando el Smooth</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p + geom_point(aes(color = TEMPERATURA), size = 2, alpha = 1/2) +
+        geom_smooth(size = 4, linetype = 3, method = &quot;lm&quot;, se = FALSE)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-53-1.png" title="plot of chunk unnamed-chunk-53" alt="plot of chunk unnamed-chunk-53" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-84" style="background:;">
+  <hgroup>
+    <h2>Cambiando el Theme</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p + geom_point(aes(color = TEMPERATURA)) + theme_bw(base_family = &quot;Times&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-54-1.png" title="plot of chunk unnamed-chunk-54" alt="plot of chunk unnamed-chunk-54" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-85" style="background:;">
+  <hgroup>
+    <h2>Gráfico Final</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-55-1.png" title="plot of chunk unnamed-chunk-55" alt="plot of chunk unnamed-chunk-55" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-86" style="background:;">
+  <hgroup>
+    <h2>Gráfico Final - Código</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">g&lt;-ggplot(Batata, aes(GRASA, HUMEDAD))
+
+## Add layers
+g + geom_point(alpha = 1/3) + 
+        facet_wrap(RECUBRIMIENTO ~ TEMPERATURA) + 
+        geom_smooth(method=&quot;lm&quot;, se=FALSE, col=&quot;steelblue&quot;) + 
+        theme_bw(base_family = &quot;Avenir&quot;, base_size = 10) + 
+        labs(x = &quot;Grasa&quot;) + 
+        labs(y = expression( Humedad [(g/kg)])) + 
+        labs(title = &quot;Relación grasa - humedad en la interacción 
+             recubrimiento - temperatura &quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-87" style="background:;">
+  <hgroup>
+    <h2>Resumen</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>ggplot2 es muy poderoso y flexible si aprendes  “The grammar” y los varios elementos que pueden ser modificados </li>
+<li>Muchos más tipos de gráficos pueden ser hechos; explora y pierdele un tiempo al paquete</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-88" style="background:;">
+  <hgroup>
+    <h2>Recursos</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The <em>ggplot2</em> book por Hadley Wickham</li>
+<li>The <em>R Graphics Cookbook</em> por Winston Chang (ejemplos en el sistema base y ggplot2)</li>
+<li>ggplot2 web site (<a href="http://ggplot2.org">http://ggplot2.org</a>)</li>
+<li>ggplot2 mailing list (<a href="http://goo.gl/OdW3uB">http://goo.gl/OdW3uB</a>), principalmente para desarrolladores</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-89" style="background:;">
+  <hgroup>
+    <h2>Motivación gráficos interactivos</h2>
+  </hgroup>
+  <article data-timings="">
+    <div id = 'chart1' class = 'rChart nvd3'></div>
+
+<script type='text/javascript'>
+ $(document).ready(function(){
+      drawchart1()
+    });
+    function drawchart1(){  
+      var opts = {
+ "dom": "chart1",
+"width":    800,
+"height":    400,
+"x": "Hair",
+"y": "Freq",
+"group": "Eye",
+"type": "multiBarChart",
+"id": "chart1" 
+},
+        data = [
+ {
+ "Hair": "Black",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             32 
+},
+{
+ "Hair": "Brown",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             53 
+},
+{
+ "Hair": "Red",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Blond",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":              3 
+},
+{
+ "Hair": "Black",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             11 
+},
+{
+ "Hair": "Brown",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             50 
+},
+{
+ "Hair": "Red",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Blond",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             30 
+},
+{
+ "Hair": "Black",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Brown",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":             25 
+},
+{
+ "Hair": "Red",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":              7 
+},
+{
+ "Hair": "Blond",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":              5 
+},
+{
+ "Hair": "Black",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              3 
+},
+{
+ "Hair": "Brown",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":             15 
+},
+{
+ "Hair": "Red",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              7 
+},
+{
+ "Hair": "Blond",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              8 
+} 
+]
+  
+      if(!(opts.type==="pieChart" || opts.type==="sparklinePlus" || opts.type==="bulletChart")) {
+        var data = d3.nest()
+          .key(function(d){
+            //return opts.group === undefined ? 'main' : d[opts.group]
+            //instead of main would think a better default is opts.x
+            return opts.group === undefined ? opts.y : d[opts.group];
+          })
+          .entries(data);
+      }
+      
+      if (opts.disabled != undefined){
+        data.map(function(d, i){
+          d.disabled = opts.disabled[i]
+        })
+      }
+      
+      nv.addGraph(function() {
+        var chart = nv.models[opts.type]()
+          .width(opts.width)
+          .height(opts.height)
+          
+        if (opts.type != "bulletChart"){
+          chart
+            .x(function(d) { return d[opts.x] })
+            .y(function(d) { return d[opts.y] })
+        }
+          
+         
+        
+          
+        
+
+        
+        
+        
+      
+       d3.select("#" + opts.id)
+        .append('svg')
+        .datum(data)
+        .transition().duration(500)
+        .call(chart);
+
+       nv.utils.windowResize(chart.update);
+       return chart;
+      });
+    };
+</script>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-90" style="background:;">
+  <hgroup>
+    <h2>Motivación gráficos interactivos</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- MotionChart generated in R 3.4.0 by googleVis 0.6.2 package -->
+
+<!-- Sat Jun 24 16:59:14 2017 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataMotionChartID5639142166de () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+"Apples",
+2008,
+"West",
+98,
+78,
+20,
+"2008-12-31"
+],
+[
+"Apples",
+2009,
+"West",
+111,
+79,
+32,
+"2009-12-31"
+],
+[
+"Apples",
+2010,
+"West",
+89,
+76,
+13,
+"2010-12-31"
+],
+[
+"Oranges",
+2008,
+"East",
+96,
+81,
+15,
+"2008-12-31"
+],
+[
+"Bananas",
+2008,
+"East",
+85,
+76,
+9,
+"2008-12-31"
+],
+[
+"Oranges",
+2009,
+"East",
+93,
+80,
+13,
+"2009-12-31"
+],
+[
+"Bananas",
+2009,
+"East",
+94,
+78,
+16,
+"2009-12-31"
+],
+[
+"Oranges",
+2010,
+"East",
+98,
+91,
+7,
+"2010-12-31"
+],
+[
+"Bananas",
+2010,
+"East",
+81,
+71,
+10,
+"2010-12-31"
+] 
+];
+data.addColumn('string','Fruit');
+data.addColumn('number','Year');
+data.addColumn('string','Location');
+data.addColumn('number','Sales');
+data.addColumn('number','Expenses');
+data.addColumn('number','Profit');
+data.addColumn('string','Date');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartMotionChartID5639142166de() {
+var data = gvisDataMotionChartID5639142166de();
+var options = {};
+options["width"] = 600;
+options["height"] = 400;
+options["state"] = "";
+
+    var chart = new google.visualization.MotionChart(
+    document.getElementById('MotionChartID5639142166de')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "motionchart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartMotionChartID5639142166de);
+})();
+function displayChartMotionChartID5639142166de() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartID5639142166de"></script>
+ 
+
+<!-- divChart -->
+
+<div id="MotionChartID5639142166de" 
+  style="width: 600; height: 400;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-91" style="background:;">
+  <hgroup>
+    <h1>Motivación gráficos interactivos</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">slidifyUI(
+sidebarLayout(        
+  sidebarPanel(
+    selectInput(&#39;sex&#39;, &#39;Choose Sex&#39;, c(&#39;Male&#39;, &#39;Female&#39;), width = &#39;100px&#39;),
+    selectInput(&#39;type&#39;, &#39;Choose Type&#39;,
+      c(&#39;multiBarChart&#39;, &#39;multiBarHorizontalChart&#39;), width = &#39;200px&#39;
+    )
+  ),
+  mainPanel(
+    tags$div(id = &#39;nvd3plot&#39;, class=&#39;shiny-html-output nvd3 rChart&#39;)
+  ),position = &quot;left&quot;, fluid = FALSE
+)
+  )
+</code></pre>
+
+<pre><code>## Error in slidifyUI(sidebarLayout(sidebarPanel(selectInput(&quot;sex&quot;, &quot;Choose Sex&quot;, : no se pudo encontrar la función &quot;slidifyUI&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Principios del análisis gráfico'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Mostrar comparaciones'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Mostrar comparaciones'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Principios del análisis gráfico'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Mostrar Causalidad'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Principios del análisis gráfico'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Mostrar datos multivariados'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Mostrar datos multivariados'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Principios del análisis gráfico'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Integrar diferentes formas de evidencias'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Principios del análisis gráfico'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Principios del análisis gráfico'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Resumen'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='El sistema base de gráficos'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='El sistema base de gráficos'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Gráfico Base'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='El sitema Lattice'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='El sitema Lattice'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Gráfico Lattice'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='El sistema ggplot2'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Gráfico ggplot2'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Que es un dispositivo gráfico?'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Como se crea un gráfico en R?'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Como se crea un gráfico en R?'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Gráficos Base'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Gráficos Base: Histograma'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Gráficos Base: Scatterplot'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Gráficos Base: Boxplot'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Algunos parámetros importantes'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Algunos parámetros importantes'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Algunos parámetros importantes'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Algunos parámetros importantes'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Funciones de Gráficos Base'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Gráfico Base con anotación'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Gráfico Base con anotación'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Gráfico Base con anotación'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Multiples gráficos Base'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Multiples gráficos Base'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Sistema de gráficos lattice'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Funciones lattice'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='Funciones lattice'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='Gráficos Lattice'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Gráficos Lattice'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Lattice Comportamiento'>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='Lattice funciones panel'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='Lattice funciones panel'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='Lattice funciones panel'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='Lattice funciones panel: Linea de regresión'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='Paneles en Lattice'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='¿Que es ggplot2?'>
+         50
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=51 title='Grammar of Graphics'>
+         51
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=52 title='Lo Básico: <code>qplot()</code>'>
+         52
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=53 title='Lo Básico: <code>qplot()</code>'>
+         53
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=54 title='Dataset ejemplo'>
+         54
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=55 title='ggplot2 “Hello, world!”'>
+         55
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=56 title='Modificar aesthetics'>
+         56
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=57 title='Añadir un geom'>
+         57
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=58 title='Histogramas'>
+         58
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=59 title='Facets'>
+         59
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=60 title='Ejemplo : Batata'>
+         60
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=61 title='Ejemplo: Batata'>
+         61
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=62 title='Histograma para la Humedad'>
+         62
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=63 title='Histograma por grupos'>
+         63
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=64 title='Densidades'>
+         64
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=65 title='Scatterplots: Grasa vs. Humedad'>
+         65
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=66 title='Scatterplots: Grasa vs. Humedad'>
+         66
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=67 title='Scatterplots: Grasa vs. Humedad'>
+         67
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=68 title='Scatterplots: Grasa vs. Humedad'>
+         68
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=69 title='Resumen de <code>qplot()</code>'>
+         69
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=70 title='Recursos'>
+         70
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=71 title='Componentes básicos de un gráfico en ggplot2'>
+         71
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=72 title='Construyendo gráficos con ggplot2'>
+         72
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=73 title='Ejemplo : Batata'>
+         73
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=74 title='Gráfico básico'>
+         74
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=75 title='La construcción por capas'>
+         75
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=76 title='Sin gráfico aún !'>
+         76
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=77 title='Primer gráfico con capa point'>
+         77
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=78 title='Añadiendo mas capas: Smooth'>
+         78
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=79 title='Añadiendo mas capas: Facets'>
+         79
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=80 title='Anotación'>
+         80
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=81 title='Modificando Aesthetics'>
+         81
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=82 title='Modificando Labels'>
+         82
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=83 title='Personalizando el Smooth'>
+         83
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=84 title='Cambiando el Theme'>
+         84
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=85 title='Gráfico Final'>
+         85
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=86 title='Gráfico Final - Código'>
+         86
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=87 title='Resumen'>
+         87
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=88 title='Recursos'>
+         88
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=89 title='Motivación gráficos interactivos'>
+         89
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=90 title='Motivación gráficos interactivos'>
+         90
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=91 title='Motivación gráficos interactivos'>
+         91
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/interactive/js/ace/js/ace.js"></script>
+<script src="libraries/widgets/interactive/js/opencpu-0.5.js"></script>
+<script src="libraries/widgets/interactive/js/interactive.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  
+  <script src="shared/shiny.js" type="text/javascript"></script>
+  <script src="shared/slider/js/jquery.slider.min.js"></script>
+  <script src="shared/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="shared/slider/css/jquery.slider.min.css"></link>
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
