@@ -1,0 +1,488 @@
+---
+title       : Manipulación de datos 
+subtitle    : Formato y limpieza de datos 
+author      : Kevin Pérez C, Profesor Auxiliar
+job         : Departamento de Matemáticas y Estadística - Universidad de Córdoba
+logo        : unicordoba3.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+widescreen  : true
+smaller     : true
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax, bootstrap, quiz, shiny, interactive]            
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Definición de datos
+
+
+<q>Los datos son valores de `variables` cualitativas o cuantitativas, pertenecientes a un `conjunto de objetos`.</q> [http://en.wikipedia.org/wiki/Data](http://en.wikipedia.org/wiki/Data)
+
+
+> - **_Conjunto de objetos_**: En ocasiones se le llama población; es un conjunto de objetos o personas con características similares. 
+> - **_Variables_**: Una medida o característica de un objeto.
+
+---
+
+## Definición de datos
+
+
+<q>Los datos son valores de variables `cualitativas` o `cuantitativas`, pertenecientes a un conjunto de objetos.</q> [http://en.wikipedia.org/wiki/Data](http://en.wikipedia.org/wiki/Data)
+
+
+> - **_Cualitativas_**: País de origen, sexo, tratamiento
+> - **_Cuantitavas_**: Estatura, peso, presión sanguínea.
+
+---
+
+## Como deberían lucir los datos 
+
+<br> 
+
+<img class=center src= assets/img/img1.png height=450/>
+
+---
+
+## Como realmente lucen 
+
+<br> 
+
+<img class=center src= assets/img/img2.png height=450/>
+
+---
+
+## De donde vienen los datos  
+
+<br> 
+
+<img class=center src= assets/img/img3.png height=450/>
+
+---
+
+
+
+
+## Los datos fuente 
+
+- El extraño archivo binario que su máquina imprime
+- El archivo Excel no formateado con 10 hojas de trabajo que le envió su compañero de empresa 
+- Los complicados datos JSON que obtiene al conectarse a la API de Twitter
+- Los números ingresados manualmente que se recolectan mirando a través de un microscopio
+
+---
+
+## Los datos ordenados 
+
+- Cada variable que se mide debe estar en una columna
+- Cada observación diferente de esa variable debe estar en una fila diferente
+- Debe haber una tabla para cada "tipo" de variable
+- Si se tienen varias tablas, debe incluir una columna cada tabla que les permita estar vinculadas
+
+---
+
+## Los datos ordenados 
+<br> 
+
+<img class=center src= assets/img/img4.png height=450/>
+
+- Cumple con los tres primeros conceptos 
+
+---
+
+## Los datos ordenados 
+
+<br> 
+
+<img class=center src= assets/img/img5.png height=450/>
+
+- ¿Falla en alguno de los conceptos? 
+
+---
+
+## Ancho vs. largo 
+
+<img class=center src= assets/img/img6.png height=450/>
+
+---
+
+## Indexado: Seleccionar - filtrar 
+
+```{r subsetting}
+set.seed(13435)
+X <- data.frame("var1" = sample(1:5), "var2" = sample(6:10), 
+                "var3" = sample(11:15))
+X <- X[sample(1:5),]; X$var2[c(1,3)] = NA
+X
+```
+
+---
+
+## Indexado: Seleccionar - filtrar 
+
+```{r ,dependson="subsetting"}
+X[,1]
+X[,"var1"]
+X[1:2,"var2"]
+```
+
+---
+
+## Indexado: Seleccionar - filtrar 
+
+```{r ,dependson="subsetting"}
+X[which(X$var2 > 8),]
+```
+
+---
+
+
+## Indexado: Seleccionar - filtrar 
+
+```{r ,dependson="subsetting"}
+X[(X$var1 <= 3 & X$var3 > 11),]
+X[(X$var1 <= 3 | X$var3 > 15),]
+```
+
+---
+
+## Adicionando filas y columnas
+
+```{r,dependson="subsetting"}
+X$var4 <- rnorm(5)
+X
+```
+
+---
+
+## Adicionando filas y columnas
+
+```{r,dependson="subsetting"}
+Y <- cbind(X,rnorm(5))
+Y
+```
+
+---
+
+## `Sort` (Orden simple)
+
+```{r ,dependson="subsetting"}
+sort(X$var1)
+sort(X$var1,decreasing = TRUE)
+sort(X$var2,na.last = TRUE)
+```
+
+---
+
+## `Order` (Orden compuesto)
+
+```{r ,dependson="subsetting"}
+X[order(X$var1),]
+```
+
+---
+
+## `Order` (Orden compuesto)
+
+```{r ,dependson="subsetting"}
+X[order(X$var1,X$var3),]
+```
+
+---
+
+## `mutate` (Secuencias)
+
+Algunas veces en el análisis de datos se hace necesario la creación de variables
+
+```{r}
+s1 <- seq(1,10, by = 2) ; s1
+s2 <- seq(1,10,length = 3); s2
+x <- c(1,3,8,25,100); seq(along = x)
+```
+
+---
+ 
+## `mutate` (Subconjuntos de variables)
+
+```{r , rest}
+restData <- read.csv("./data/restaurants.csv")
+restData$nearMe = restData$neighborhood %in% c("Roland Park", "Homeland")
+table(restData$nearMe)
+```
+
+---
+
+## `mutate` (Variables binarias)
+
+```{r,dependson="rest"}
+restData$zipWrong = ifelse(restData$zipCode < 0, TRUE, FALSE)
+table(restData$zipWrong,restData$zipCode < 0)
+```
+
+---
+
+## `mutate` (Variables categóricas)
+
+```{r,dependson="rest"}
+restData$zipGroups = cut(restData$zipCode,
+                         breaks = quantile(restData$zipCode))
+table(restData$zipGroups)
+#table(restData$zipGroups,restData$zipCode)
+```
+
+---
+
+## `mutate` (Cortes `cutting`)
+
+```{r,dependson="rest"}
+suppressMessages(suppressWarnings(library(Hmisc)))
+restData$zipGroups = cut2(restData$zipCode, g = 4)
+table(restData$zipGroups)
+```
+
+---
+
+## `mutate` (Creando factores)
+
+```{r, dependson="rest"}
+restData$zcf <- factor(restData$zipCode)
+restData$zcf[1:10]
+class(restData$zcf)
+```
+
+---
+
+## `mutate` (Niveles del factor)
+
+```{r}
+yesno <- sample(c("yes","no"), size = 10, replace = TRUE)
+yesnofac = factor(yesno, levels = c("yes", "no"))
+relevel(yesnofac, ref = "no")
+as.numeric(yesnofac)
+```
+
+---
+
+## `mutate` (Transformaciones comunes)
+
+* `abs(x)` valor absoluto
+* `sqrt(x)` raíz cuadrada
+* `ceiling(x)` ceiling(3.475) es 4
+* `floor(x)` floor(3.475) es 3
+* `round(x,digits=n)` round(3.475,digits=2) es 3.48
+* `signif(x,digits=n)` signif(3.475,digits=2) es 3.5
+* `cos(x), sin(x)` etc.
+* `log(x)` logaritmo natural
+* `log2(x)`, `log10(x)` otros logaritmos 
+* `exp(x)` exponencial de x
+
+---
+
+## Formato - (Ancho: `wide`)
+
+En general un conjunto de datos estructurado en forma tabular viene con el formato `wide`.
+
+```{r}
+suppressMessages(suppressWarnings(library(reshape2)))
+head(mtcars)
+```
+
+---
+
+## Formato - (Largo: `long`)
+
+La función `melt` de la librería `reshape` es de mucha utilidad a la hora de especificar el formato `long`
+
+```{r}
+mtcars$carname <- rownames(mtcars)
+carMelt <- melt(mtcars, id = c("carname","gear","cyl"),
+                measure.vars = c("mpg","hp"))
+head(carMelt)
+```
+
+---
+
+## Formato - (Largo: `long`)
+
+La función `melt` de la librería `reshape` es de mucha utilidad a la hora de especificar el formato `long`
+
+```{r}
+mtcars$carname <- rownames(mtcars)
+carMelt <- melt(mtcars, id = c("carname","gear","cyl"),
+                measure.vars = c("mpg","hp"))
+tail(carMelt)
+```
+
+---
+
+## Formato - (Modear: `cast`)
+
+```{r}
+cylData <- dcast(carMelt, cyl ~ variable, mean)
+cylData
+```
+
+---
+
+## `Summarized` (Resumir)
+
+Obtener una vista previa de los datos 
+
+```{r ,dependson="rest"}
+head(restData, n = 3)
+```
+
+---
+
+## `Summarized` (Resumir)
+
+Obtener una vista previa de los datos 
+
+```{r ,dependson="rest"}
+tail(restData, n = 3)
+```
+
+---
+
+## `Summarized` (Resumir)
+
+```{r ,dependson="rest"}
+summary(restData)
+```
+
+---
+
+## `Summarized` (Resumir)
+
+```{r ,dependson="rest"}
+str(restData)
+```
+
+---
+
+## `Summarized` (Resumir)
+
+```{r ,dependson="rest"}
+quantile(restData$councilDistrict,na.rm = TRUE)
+quantile(restData$councilDistrict,probs = c(0.5,0.75,0.9))
+```
+
+---
+
+## `Summarized` (Resumir)
+
+```{r ,dependson="rest"}
+table(restData$councilDistrict,restData$zipCode)
+```
+
+---
+
+## `Summarized` (Resumir)
+
+```{r ,dependson="rest"}
+sum(is.na(restData$councilDistrict))
+any(is.na(restData$councilDistrict))
+all(restData$zipCode > 0)
+```
+
+---
+
+## `Summarized` (Resumir)
+
+```{r ,dependson="rest"}
+colSums(is.na(restData))
+all(colSums(is.na(restData)) == 0)
+```
+
+---
+
+
+## `Summarized` (Resumir)
+
+```{r ,dependson="rest"}
+table(restData$zipCode %in% c("21212"))
+table(restData$zipCode %in% c("21212","21213"))
+```
+
+---
+
+## `Summarized` (Resumir)
+
+```{r, ucba}
+data(UCBAdmissions)
+DF = as.data.frame(UCBAdmissions)
+summary(DF)
+```
+
+---
+
+## `Summarized` (Resumir)
+
+```{r, dependson= "ucba"}
+xt <- xtabs(Freq ~ Gender + Admit,data = DF)
+xt
+```
+
+---
+
+## `Summarized` (Resumir)
+
+```{r}
+warpbreaks$replicate <- rep(1:9, len = 54)
+xt = xtabs(breaks ~.,data=warpbreaks)
+ftable(xt)
+```
+
+---
+
+## `Summarized` (Resumir)
+
+```{r}
+fakeData = rnorm(1e5)
+object.size(fakeData)
+print(object.size(fakeData), units = "Mb")
+```
+
+---
+
+## `merge` (Operaciones sobre tablas)
+
+```{r}
+reviews = read.csv("./data/reviews.csv")
+solutions <- read.csv("./data/solutions.csv")
+head(reviews, 2)
+head(solutions, 2)
+```
+
+---
+
+## `merge` (Operaciones sobre tablas)
+
+- Une data frames
+- Parámetros Importantes: _x_, _y_, _by_, _by.x_, _by.y_, _all_
+
+```{r}
+names(reviews)
+names(solutions)
+```
+
+---
+
+## `merge` (Operaciones sobre tablas)
+
+```{r}
+mergedData <- merge(reviews,solutions, by.x = "solution_id",
+                    by.y = "id", all = TRUE)
+head(mergedData, 3)
+```
+
+---
+
+## `merge` (Operaciones sobre tablas)
+
+```{r}
+intersect(names(solutions),names(reviews))
+mergedData2 <- merge(reviews,solutions, all = TRUE)
+head(mergedData2, 3)
+```
+
