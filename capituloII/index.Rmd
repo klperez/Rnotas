@@ -1,0 +1,524 @@
+---
+title       : Obtención y Manipulación de datos 
+subtitle    : Obtención de datos locales  
+author      : Kevin Pérez C, Profesor Auxiliar
+job         : Departamento de Matemáticas y Estadística - Universidad de Córdoba
+logo        : unicordoba3.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+widescreen  : true
+smaller     : true
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax, bootstrap, quiz, shiny, interactive]            
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Obtención de datos en `R`
+
+La obtención de datos en R, consiste en la tarea de llevar al espacio de trabajo, datos desde cualquier fuente de información. Las fuentes mas comunes son:
+
+- Archivos planos, .txt, .csv, etc.
+- Archivos de Excel .xlsx
+- Otros software estadístico, SAS, SPSS Modeler, Stata.
+- Bases de datos, MySQL, Mongo, SQL Server, Postgre SQL
+- Datos de la web y redes sociales 
+
+---
+
+## Leyendo Datos
+
+Existen una serie de funciones principales para la lectura de datos en R.
+
+- `read.table`, `read.csv`, para leer datos tabulares 
+- `readLines`, para leer lineas de un archivo de texto
+- `source`, para leer en los archivos de código R (`inverse` de `dump`) 
+- `dget`, para leer en los archivos de código R (`inverse` de `dput`)
+- `load`, para la lectura en espacios de trabajo guardados
+- `unserialize`, para la lectura de los objetos individuales de R en forma binaria
+
+---
+
+## Lectura de archivos de datos con `read.table`
+
+La función `read.table` es una de las funciones más utilizadas para la lectura de datos. Cuenta con unos argumentos importantes:
+
+- `file`, el nombre de un archivo, o una conexión
+- `header`, lógico indicando si el archivo tiene una línea de cabecera
+- `sep`, una cadena que indica cómo se separan las columnas
+- `colClasses`, un vector de caracteres que indica la clase de cada columna en el conjunto de datos 
+- `nrows`, el número de filas en el conjunto de datos
+- `comment.char`, una cadena de caracteres que indica el carácter de comentario
+- `skip`, El número de líneas a saltar desde el principio
+- `stringsAsFactors`, deben codificarse variables de carácter como factores?
+
+---
+
+## `read.table`
+
+Para los conjuntos de datos pequeños o de tamaño moderado, por lo general puede llamar `read.table` sin especificar cualquier otro argumento
+
+```r
+data <- read.table("foo.txt")
+```
+R automáticamente
+
+- salta las líneas que comienzan con un `#`
+- averigua cuántas filas existen (y cuánta memoria tiene que ser asignada)- averigua qué tipo de variable es la ubicada en cada columna de la tabla
+
+Decirle directamente a R todas estas cosas hace a  R funcionar más rápido y más eficientemente.
+- `read.csv` es idéntica a read.table excepto que el separador predeterminado es una coma.
+
+---
+
+## `read.csv`
+
+```{r}
+# Lista los archivos en tu directorio
+dir()
+# Importa swimming_pools.csv: pools
+pools <- read.csv("data/swimming_pools.csv")
+```
+
+---
+
+## `read.csv`
+
+```{r}
+# Lista los archivos en tu directorio
+dir()
+
+# Imprime la estructura de pools 
+str(pools)
+```
+
+---
+
+## `read.table`
+
+```{r}
+# Importa el archivo hotdogs.txt 
+hotdogs <- read.table("data/hotdogs.txt",sep = "\t", 
+                      col.names = c("type", "calories","sodium"))
+
+# Llama a head() en hotdogs.txt 
+head(hotdogs)
+
+```
+
+---
+
+## La lectura en grandes conjuntos de datos con read.table
+
+Con conjuntos de datos mucho más grandes, hacer las siguientes cosas le hará la vida más fácil y evitará que R se 'ahogue'.
+
+- Lea la página de ayuda para read.table, que contiene muchos consejos
+- Hacer un cálculo aproximado de la memoria necesaria para almacenar su conjunto de datos. Si el conjunto de datos es mayor que la cantidad de RAM en su equipo, es probable que usted deba parar aquí.
+- Establecer `comment.char =" "` si no hay líneas comentadas en el archivo.
+
+---
+
+## Lectura en grandes conjuntos de datos con read.table
+
+- Utilice el argumento `colClasses`. Especificar esta opción en lugar de utilizar el valor por defecto puede hacer que 'read.table' corra mucho más rápido, a menudo el doble de rápido. Para utilizar esta opción, usted tiene que saber la clase de cada columna en el marco de datos. Si todas las columnas son "numérico", por ejemplo, a continuación, puedes configurar `colClasses =" numérico "`. Una manera rápida de averiguar las clases de cada columna es el siguiente:
+
+```r
+initial <- read.table("datatable.txt", nrows = 100)
+classes <- sapply(initial, class)
+tabAll <- read.table("datatable.txt",
+                     colClasses = classes)
+```
+
+- Declarar `nrows`. Esto no hace que R funcione más rápido pero ayuda con el uso de memoria. Una sobreestimación suave está bien. Puede utilizar la herramienta `wc` de Unix para calcular el número de líneas en un archivo.
+
+---
+
+## Conocer tu sistema
+
+En general, cuando se utiliza R con grandes conjuntos de datos, es útil saber algunas cosas acerca de su sistema.
+
+- ¿Cuánta memoria está disponible?
+- ¿Qué otras aplicaciones están en uso?
+- ¿Existen otros usuarios registrados en el mismo sistema?
+- qué sistema operativo?
+- Es el sistema operativo de 32 o 64 bits?
+
+---
+
+## Cálculo de requisitos de memoria
+
+Suponga que tiene un data frame con 1.500.000 filas y  120 columnas, los cuales son datos numéricos. Usualmente, que cantidad de memoria se requiere para almacenar este data frame?
+
+
+1,500,000 × 120 × 8 bytes/numeric 
+
+  = 1440000000 bytes
+  
+  = 1440000000 / $2^{20}$ bytes/MB  
+  
+  = 1,373.29 MB
+  
+  = 1.34 GB                     
+
+---
+
+## Importando datos desde `Excel`
+
+- Como sabemos `Excel` es una de las herramientas de análisis de datos más comunes del mercado 
+
+- Muchos paquetes en `R` interactuan con datos de `Excel`
+
+- `readxl` - _Hadley Wickhan_
+- `XLConnect` - _Mirai Solutions GmbH_
+- `gdata` - _Gregory R. Warnes, et All_
+
+---
+
+## Importando datos desde `Excel`
+Antes de importar el documento, es importante encontrar que hojas se encuentran disponibles.
+
+```{r, warning=FALSE, message=FALSE}
+# Carga el paquete 
+suppressMessages(suppressWarnings(library(readxl)))
+# Encuentra los nombre de las hojas 
+sheets <- excel_sheets("data/latitude.xlsx")
+# Imprime las hojas
+sheets
+
+class(sheets)
+```
+
+---
+
+## Importando datos desde `Excel`
+Ahora que ya sabe los nombres es posible empezar a importar los datos de Excel
+
+```{r, warning=FALSE, message=FALSE}
+
+latitude_1 <- read_excel("data/latitude.xlsx", sheet = 1)
+
+latitude_2 <- read_excel("data/latitude.xlsx", sheet = "1900")
+
+lat_list <- list(latitude_1, latitude_2)
+
+str(lat_list)
+```
+
+---
+
+## Importando datos desde `Excel`
+Una forma mas sencilla de hacerlo es utilizando funciones vectorizadas en el proceso 
+
+```{r}
+
+lat_list <- lapply(excel_sheets("data/latitude.xlsx"), read_excel,
+                  path = "latitude.xlsx")
+
+str(lat_list)
+```
+
+---
+
+## Importando datos desde `Excel`
+Existen una serie de argumentos en la función `read_excel()` que ayudan a facilitar la carga de los datos.
+
+```{r}
+latitude_3 <- read_excel("data/latitude_nonames.xlsx", sheet = 1, 
+                       col_names = FALSE)
+latitude_4 <- read_excel("data/latitude_nonames.xlsx", sheet = 2, 
+                         col_names = c("country","latitude")) 
+summary(latitude_3)
+
+```
+
+---
+
+## Importando datos desde `Excel`
+
+```{r}
+latitude_3 <- read_excel("data/latitude_nonames.xlsx", sheet = 1, 
+                       col_names = FALSE)
+
+latitude_4 <- read_excel("data/latitude_nonames.xlsx", sheet = 2, 
+                         col_names = c("country", "latitude")) 
+
+summary(latitude_4)
+```
+
+---
+
+## Importando datos desde `Excel`
+
+Se pueden especificar los nombres de columnas para especificar la carga de los datos.
+
+```{r}
+cols <- c("country", paste0("year_", 1960:1966))
+
+pop_b <- read_excel("data/urbanpop_nonames.xlsx", sheet = 1, col_names = cols)
+
+summary(pop_b)
+```
+
+---
+
+## Importando datos desde `Excel`
+
+Otro argumento que puede ser de bastante utilidad cuando se trata de leer archivos `Excel` es `skip`, con él se puede especificar el número de filas que se quieren omitir en la carga.
+
+```{r}
+urbanpop_sel <- read_excel("data/urbanpop.xlsx", sheet = 2, 
+                           col_names = FALSE, skip = 21)
+
+head(urbanpop_sel, 1)[1,]
+
+```
+
+---
+
+## Importando datos desde `Excel`
+
+Con el paquete `gadata()` se pueden leer archivos `.xls` de forma similar a la paquete `readxl`.
+
+```{r}
+suppressMessages(suppressWarnings(library(gdata)))
+
+urban_pop <- read.xls("data/urbanpop.xls", sheet = "1967-1974")
+
+head(urban_pop, 3)
+```
+
+---
+
+## Importando datos desde `Excel`
+
+Las funciones de este paquete se asemeja a la carga de la función `read.table()`.
+
+```{r}
+columns <- c("country", paste0("year_", 1967:1974))
+urban_pop <- read.xls("data/urbanpop.xls", sheet = 2,
+                      skip = 50, header = FALSE, stringsAsFactors = FALSE,
+                      col.names = columns)
+head(urban_pop, 3)
+```
+
+---
+
+## Importando datos desde `Excel`
+
+Cuando se trata de trabajar con `XLconnect`, el primer paso es cargar el libro de trabajo 
+
+```{r}
+suppressMessages(suppressWarnings(library("XLConnect")))
+
+my_book <- loadWorkbook("data/urbanpop.xlsx")
+
+class(my_book)
+```
+
+---
+
+## Importando datos desde `Excel`
+
+`XLconnect` permite listar las hojas del documento e importarlas directamente al espacio de trabajo
+
+```{r}
+
+my_book <- loadWorkbook("data/urbanpop.xlsx")
+
+getSheets(my_book)
+
+readWorksheet(my_book, "1967-1974")
+
+```
+
+---
+
+
+## Importando datos desde `Excel`
+
+`XLconnect` permite personalizar la carga de los datos proveniente de las hojas del documentos `Excel`
+
+```{r}
+
+my_book <- loadWorkbook("data/urbanpop.xlsx")
+
+urbanpop_sel <- readWorksheet(my_book, sheet = 2, startCol = 3, endCol = 5)
+
+countries <- readWorksheet(my_book, sheet = 2, startCol= 1, endCol= 1)
+
+selection <- cbind(countries, urbanpop_sel)
+
+```
+
+---
+
+## Importando datos desde `Excel`
+
+Se pueden añadir más hojas de trabajo
+
+```{r}
+
+my_book <- loadWorkbook("data/urbanpop.xlsx")
+
+createSheet(my_book, name = "data_summary")
+
+getSheets(my_book)
+```
+
+---
+
+## Importando datos desde `Excel`
+
+Se pueden renombrar las hojas de trabajo
+
+```{r}
+
+my_book <- loadWorkbook("data/urbanpop.xlsx")
+
+renameSheet(my_book, "data_summary", "summary")
+
+getSheets(my_book)
+
+saveWorkbook(my_book, "renamed.xlsx")
+```
+
+---
+
+## Importando datos desde `Excel`
+
+Se pueden eliminar las hojas de trabajo
+
+```{r}
+
+my_book <- loadWorkbook("data/urbanpop.xlsx")
+
+removeSheet(my_book, "summary")
+
+saveWorkbook(my_book, "clean.xlsx")
+```
+
+---
+
+## Get/set el directorio de trabajo
+
+* Un componente básico del trabajo con datos es el conocer su directorio de trabajo
+* Los comandos principales son ```getwd()``` y ```setwd()```. 
+* Tenga en cuenta
+  * __Relativos__ - ```setwd("./data")```, ```setwd("../")```
+  * __Absolutos__ - ```setwd("/Users/su_nombre/data/")```
+* Importantes diferencias con Windows  ```setwd("C:\\Users\\su_nombre\\Downloads")```
+
+---
+
+## Revisar la creación de directorios 
+
+* ```file.exists("Nombre_directorio")``` confirmara si el directorio existe
+* ```dir.create("Nombre_directorio")``` Creara el directorio sino existe 
+* Aquí un ejemplo para la verificación y creación de un directorio "data" en caso de no existir. 
+
+```{r data}
+if (!file.exists("data")) {
+  dir.create("data")
+}
+```
+
+---
+
+## Descargando datos de la web - `download.file()`
+
+* Descarga una archivo de la web
+* Incluso si se puede hacer a mano, ayuda con la reproducibilidad 
+* Parámetros importantes son _url_, _destfile_, _method_
+* Útil para descargar archivo delimitados por _tab_, _csv_, y otros archivos
+
+
+---
+
+## Descargando datos de la web
+
+```{r,dependson="data"}
+#fileUrl <- "https://data.baltimorecity.gov/api/views/dz54-2aru/rows.csv?accessType=DOWNLOAD"
+#download.file(fileUrl,destfile="./cameras.csv",method="curl")
+#list.files()
+#dateDownloaded <- date()
+#dateDownloaded
+```
+
+---
+
+## Algunas recomendaciones para `download.file()`
+
+* Si la url comienza con _http_ se pude usar `download.file()`
+* Si la url comienza con _https_ en Windows puede funcionar
+* Si la url comienza con _https_ en Mac necesitas configurar el _method="curl"_
+* Si el archivo es grande, esto puede tomar tiempo
+* Asegúrate de revisar si la descarga fue exitosa.
+
+---
+
+## Existe un paquete para eso 
+
+* en general la mejor forma de encontrar un paquete en `R` es en Google "Herramienta R package" 
+
+* Por ejemplo: "MySQL R package"
+
+---
+
+## Interactuando con archivos directamente 
+
+* file - abre una conexión a un archivo de texto
+* url - abre una conexión a una url
+* gzfile - abre una conexión a un archivo .gz
+* bzfile - abre una conexión a un archivo .bz2 
+* _?connections_ Para más información
+* <redtext> Recuerde cerrar las conexiones siempre </redtext>
+
+---
+
+## paquete foreign
+
+* Carga datos de Minitab, S, SAS, SPSS, Stata,Systat
+* Funciones básicas _read.foo_
+  * read.arff (Weka)
+  * read.dta (Stata)
+  * read.mtp (Minitab)
+  * read.octave (Octave)
+  * read.spss (SPSS)
+  * read.xport (SAS)
+* Vea la pagina de ayuda para más detalles [http://cran.r-project.org/web/packages/foreign/foreign.pdf](http://cran.r-project.org/web/packages/foreign/foreign.pdf)
+
+
+---
+
+## Ejemplos de paquetes para bases de datos 
+
+* RPostresSQL provee una conexión a la base de datos tipo DBI-complaint. Tutorial-[https://code.google.com/p/rpostgresql/](https://code.google.com/p/rpostgresql/), archivo de ayuda-[http://cran.r-project.org/web/packages/RPostgreSQL/RPostgreSQL.pdf](http://cran.r-project.org/web/packages/RPostgreSQL/RPostgreSQL.pdf)
+* RODBC provee interfaces a múltiples bases de datos incluyendo PostgreQL, MySQL, Microsoft Access y SQLite. Tutorial - [http://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf](http://cran.r-project.org/web/packages/RODBC/vignettes/RODBC.pdf), archivo de ayuda - [http://cran.r-project.org/web/packages/RODBC/RODBC.pdf](http://cran.r-project.org/web/packages/RODBC/RODBC.pdf)
+* RMongo [http://cran.r-project.org/web/packages/RMongo/RMongo.pdf](http://cran.r-project.org/web/packages/RMongo/RMongo.pdf) (ejemplo de Rmongo [http://www.r-bloggers.com/r-and-mongodb/](http://www.r-bloggers.com/r-and-mongodb/)) y [rmongodb](http://cran.r-project.org/web/packages/rmongodb/rmongodb.pdf) provee interfaces a MongoDb. 
+
+
+---
+
+## Leyendo imagenes 
+
+- jpeg - [http://cran.r-project.org/web/packages/jpeg/index.html](http://cran.r-project.org/web/packages/jpeg/index.html)
+- readbitmap - [http://cran.r-project.org/web/packages/readbitmap/index.html](http://cran.r-project.org/web/packages/readbitmap/index.html)
+- png - [http://cran.r-project.org/web/packages/png/index.html](http://cran.r-project.org/web/packages/png/index.html)
+- EBImage (Bioconductor) - [http://www.bioconductor.org/packages/2.13/bioc/html/EBImage.html](http://www.bioconductor.org/packages/2.13/bioc/html/EBImage.html)
+
+---
+
+## Leyendo datos tipo GIS 
+
+- rgdal - [http://cran.r-project.org/web/packages/rgdal/index.html](http://cran.r-project.org/web/packages/rgdal/index.html)
+- rgeos - [http://cran.r-project.org/web/packages/rgeos/index.html](http://cran.r-project.org/web/packages/rgeos/index.html)
+- raster - [http://cran.r-project.org/web/packages/raster/index.html](http://cran.r-project.org/web/packages/raster/index.html)
+
+---
+
+## Leyendo datos de musica
+
+- tuneR - [http://cran.r-project.org/web/packages/tuneR/](http://cran.r-project.org/web/packages/tuneR/)
+- seewave - [http://rug.mnhn.fr/seewave/](http://rug.mnhn.fr/seewave/)
+
+---
