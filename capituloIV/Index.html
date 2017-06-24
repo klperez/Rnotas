@@ -1,0 +1,2453 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Programación en R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Programación en R">
+  <meta name="author" content="Kevin Pérez C, Profesor Auxiliar">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/interactive/css/aceeditor.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/unicordoba3.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Programación en R</h1>
+    <h2></h2>
+    <p>Kevin Pérez C, Profesor Auxiliar<br/>Departamento de Matemáticas y Estadística - Universidad de Córdoba</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Motivación</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><strong>Que hace este código?</strong></h3>
+
+<p><img class=center src= assets/img/img1.png height=450/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Motivación</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><strong>Que hace este código?</strong></h3>
+
+<p><img class=center src= assets/img/img2.png height=450/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Motivación</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><strong>Que hace este código?</strong></h3>
+
+<p><img class=center src= assets/img/img3.png height=450/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Motivación</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><strong>Que hace este código?</strong></h3>
+
+<p><img class=center src= assets/img/img4.png height=450/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Motivación</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><strong>Que hace este código?</strong></h3>
+
+<p><img class=center src= assets/img/img5.png height=450/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Motivación</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><strong>Que hace este código?</strong></h3>
+
+<p><img class=center src= assets/img/img6.png height=450/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Motivación</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><strong>Que hace este código?</strong></h3>
+
+<p><img class=center src= assets/img/img7.png height=450/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Motivación</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><strong>Que hace este código?</strong></h3>
+
+<p><img class=center src= assets/img/img8.png height=450/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Motivación</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><q> Si ha tenido que copiar y pegar más de dos veces, entonces es tiempo de escribir una función</q></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Estructuras de Control</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Las estructuras de control en R le permiten controlar el flujo de ejecución del programa, dependiendo de las condiciones de ejecución. Las estructuras más comunes son:</p>
+
+<ul>
+<li><p><code>if</code>, <code>else</code>: Prueban una condición</p></li>
+<li><p><code>for</code>: Ejecutan un ciclo un número fijo de veces</p></li>
+<li><p><code>while</code>: Ejecutan un ciclo <strong><em>Mientras</em></strong> una condición es verdadera </p></li>
+<li><p><code>repeat</code>: Ejecutan un ciclo un número infinito de veces </p></li>
+<li><p><code>break</code>: Detienen la ejecución de un ciclo</p></li>
+<li><p><code>next</code>: Omiten una iteración de un ciclo</p></li>
+<li><p><code>return</code>: Salir de una función</p></li>
+</ul>
+
+<p>La mayoría de las estructuras de control no se utilizan en las sesiones interactivas, sino más bien al escribir funciones o expresiones más largas.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Estructuras de control: if</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">if(&lt;condition&gt;) {
+        ## Hacer algo
+} else {
+        ## Hacer algo más
+}
+if(&lt;condition1&gt;) {
+        ## Hacer algo
+} else if(&lt;condition2&gt;)  {
+        ## Hacer algo diferente
+} else {
+        ## Hacer algo diferente
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>if</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Esta es una estructura valida if/else </p>
+
+<pre><code class="r">if(x &gt; 3) {
+        y &lt;- 10
+} else {
+        y &lt;- 0
+}
+</code></pre>
+
+<p>Esta también.</p>
+
+<pre><code class="r">y &lt;- if(x &gt; 3) {
+        10
+} else { 
+        0
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>if</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Por supuesto, la sentencia else no es necesaria. </p>
+
+<pre><code class="r">if(&lt;condition1&gt;) {
+
+}
+
+if(&lt;condition2&gt;) {
+
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>for</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Los bucles <code>for</code> toman una variable iteradora y le asignan valores sucesivos de una secuencia o vector. Los bucles <code>for</code> se utilizan más comúnmente para iterar sobre los elementos de un objeto (lista, vector, etc.)</p>
+
+<pre><code class="r">for(i in 1:10) {
+        print(i)
+}
+</code></pre>
+
+<p>Este bucle toma la variable <code>i</code> y en cada iteración del bucle toma los valores 1, 2, 3, ..., 10. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>for</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Estos tres ciclos tienen el mismo comportamiento.</p>
+
+<pre><code class="r">x &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;)
+
+for(i in 1:4) {
+        print(x[i])
+}
+
+for(i in seq_along(x)) {
+        print(x[i])
+}
+
+for(letter in x) {
+        print(letter)
+}
+
+for(i in 1:4) print(x[i])
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>For anidados</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Los bucles <code>for</code> pueden ser anidados.</p>
+
+<pre><code class="r">x &lt;- matrix(1:6, 2, 3)
+for(i in seq_len(nrow(x))) {
+        for(j in seq_len(ncol(x))) {
+                print(x[i, j])
+        }   
+}
+</code></pre>
+
+<p>Tenga cuidado con la anidación. Anidación más allá de 2-3 niveles es a menudo muy difícil de leer/entender.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>while</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Ciclos <code>While</code> comienzan probando una condición. Si esta es cierta, entonces ejecutan el cuerpo del ciclo Una vez que se ejecuta el cuerpo del ciclo, la condición se comprueba de nuevo, y así sucesivamente.</p>
+
+<pre><code class="r">count &lt;- 0
+while(count &lt; 10) {
+        print(count)
+        count &lt;- count + 1
+}
+</code></pre>
+
+<p>Ciclos <code>While</code> potencialmente pueden resultar en ciclos infinitos si no está escrito correctamente. Use con cuidado!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>while</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>A veces habrá más de una condición en la prueba.</p>
+
+<pre><code class="r">z &lt;- 5
+while(z &gt;= 3 &amp;&amp; z &lt;= 10) {
+        print(z)
+        coin &lt;- rbinom(1, 1, 0.5)
+
+        if(coin == 1) {  
+                z &lt;- z + 1
+        } else {
+                z &lt;- z - 1
+        } 
+}
+</code></pre>
+
+<p>Las condiciones siempre se evalúan de izquierda a derecha.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>repeat</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>Repeat</code> inicia un ciclo infinito; en estadística aplicada no es comúnmente usado, pero si tiene sus usos. La única forma de salir de un ciclo <code>repeat</code> es llamando a un <code>break</code>.  </p>
+
+<pre><code class="r">x0 &lt;- 1
+tol &lt;- 1e-8
+repeat {
+        x1 &lt;- computeEstimate()
+
+        if(abs(x1 - x0) &lt; tol) {
+                break
+        } else {
+                x0 &lt;- x1
+        } 
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>repeat</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>El bucle en la diapositiva anterior es un poco peligroso porque no hay garantía de que se detendrá. Mejor establece un límite estricto sobre el número de iteraciones (por ejemplo, utilizando un bucle for) y luego pregunta si la convergencia se logró o no.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>next, return</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>next</code> se utiliza para omitir una iteración de un ciclo</p>
+
+<pre><code class="r">for(i in 1:100) {
+        if(i &lt;= 20) {
+                ## Skip the first 20 iterations
+                next 
+        }
+        ## Do something here
+}
+</code></pre>
+
+<p><code>return</code> señales de que una función debe salir y regresar un valor dado</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Estructuras de control</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Resumen</p>
+
+<ul>
+<li><p>Estructuras de control como <code>if</code>, <code>while</code>, y <code>for</code> te permiten tener el control sobe la ejecución en R</p></li>
+<li><p>Ciclos infinitos deben ser evitados en general, incluso si son teóricamente correcto.</p></li>
+<li><p>Las estructuras de control mencionadas aquí son principalmente útiles para escribir programas; para la línea de comandos de trabajo interactivo, las funciones apply son más útiles.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Funciones</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Las funciones son creadas usando la sentencia <code>function()</code> y es grabada como cualquier otro objeto en memoria de R.</p>
+
+<p>En particular, son un objeto de la clase <code>function</code>.</p>
+
+<pre><code class="r">f &lt;- function(&lt;arguments&gt;) {
+        ## Código de programación
+}
+</code></pre>
+
+<p>En R las funciones son “objetos de primera clase”, lo que significa que pueden ser tratados como cualquier otro objeto R. Es importante destacar que,</p>
+
+<ul>
+<li>Las funciones pueden ser pasadas como argumentos a otras funciones</li>
+<li>Las funciones se pueden anidar, por lo que se puede definir una función dentro de otra función</li>
+<li>El valor de retorno de una función es la última expresión a evaluar en el cuerpo de la función.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Definición de funciones</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">my_fun &lt;- function(arg1, arg2) {
+    ## Cuerpo de la función 
+}
+</code></pre>
+
+<pre><code class="r">add &lt;- function(x, y = 1) {
+    x + y
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Anatomía de una función</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">add &lt;- function(x, y = 1) {
+    x + y
+}
+formals(add)
+</code></pre>
+
+<pre><code>## $x
+## 
+## 
+## $y
+## [1] 1
+</code></pre>
+
+<pre><code class="r">body(add)
+</code></pre>
+
+<pre><code>## {
+##     x + y
+## }
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Anatomía de una función</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">add &lt;- function(x, y = 1) {
+    x + y
+}
+formals(add)
+</code></pre>
+
+<pre><code>## $x
+## 
+## 
+## $y
+## [1] 1
+</code></pre>
+
+<pre><code class="r">environment(add)
+</code></pre>
+
+<pre><code>## &lt;environment: R_GlobalEnv&gt;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>Salidas: el valor devuelto <code>return</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <p>La última expresión evaluada en una función es el valor de retorno</p>
+
+<pre><code class="r">f &lt;- function(x) {
+    if (x &lt; 0) {
+        -x
+        } else {
+            x
+        }
+}
+f(-5)
+</code></pre>
+
+<pre><code>## [1] 5
+</code></pre>
+
+<pre><code class="r">f(15)
+</code></pre>
+
+<pre><code>## [1] 15
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Salidas: el valor devuelto <code>return</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>return(value)</code> fuerza la función a terminar la ejecución y devuelve el el último valor.</p>
+
+<pre><code class="r">f &lt;- function(x) {
+    if (x &lt; 0) {
+        -x
+        } else {
+            x
+        }
+    return(x)
+}
+f(-5)
+</code></pre>
+
+<pre><code>## [1] -5
+</code></pre>
+
+<pre><code class="r">f(15)
+</code></pre>
+
+<pre><code>## [1] 15
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Las funciones son objetos</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mean2 &lt;- mean
+mean2(1:10)
+</code></pre>
+
+<pre><code>## [1] 5.5
+</code></pre>
+
+<pre><code class="r">function(x) { x + 1 }
+</code></pre>
+
+<pre><code>## function(x) { x + 1 }
+</code></pre>
+
+<pre><code class="r">(function(x) { x + 1 })(2)
+</code></pre>
+
+<pre><code>## [1] 3
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>Resumen</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Hay tres partes en una función </p>
+
+<ul>
+<li>Argumentos </li>
+<li>Cuerpo</li>
+<li>Ambiente </li>
+</ul></li>
+<li><p>El valor devuelto es la última expresión ejecutada, o la primera sentencia <code>return()</code> encontrada</p></li>
+<li><p>Las funciones pueden ser tratadas como objetos comunes en R.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>Argumentos de funciones</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Las funciones pueden tener <em>argumentos nombrados</em> lo cuales potencialmente tienen <em>valores por defecto</em>.</p>
+
+<ul>
+<li>Los <em>argumentos formales</em> son los argumentos incluidos en la definición de la función </li>
+<li>La función <code>formals</code> devuelve una lista de todos los argumentos formales de una función. </li>
+<li>No todas las llamada a la función en R hacen uso de todos los argumentos formales</li>
+<li>Los argumentos de funciones pueden ser <em>vacios</em> o pueden tener valores por defectos </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>Ajuste de argumentos</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Los argumentos de funciones en R pueden ser ajustados posicionalmente o por nombres. Así que las siguientes llamadas a las funciones <code>sd</code> son equivalentes.</p>
+
+<pre><code class="r">&gt; mydata &lt;- rnorm(100)
+&gt; sd(mydata)
+&gt; sd(x = mydata)
+&gt; sd(x = mydata, na.rm = FALSE)
+&gt; sd(na.rm = FALSE, x = mydata)
+&gt; sd(na.rm = FALSE, mydata)
+</code></pre>
+
+<p>A pesar de que es correcto, no se recomienda probar con el orden de los argumentos, ya que puede dar lugar a cierta confusión.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>Ajuste de argumentos</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Se puede mezclar ajuste posicional con ajuste por nombre. Cuando un argumento es igualado por su nombre, se &quot;saca&quot; de la lista de argumentos y los argumentos sin nombre restantes se corresponden en el orden en que aparecen en la definición de función .</p>
+
+<pre><code class="r">&gt; args(lm)
+function (formula, data, subset, weights, na.action,
+          method = &quot;qr&quot;, model = TRUE, x = FALSE,
+          y = FALSE, qr = TRUE, singular.ok = TRUE,
+          contrasts = NULL, offset, ...)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <hgroup>
+    <h2>Ajuste de argumentos</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Las siguientes dos llamadas a la función son equivalentes.</p>
+
+<pre><code class="r">lm(data = mydata, y ~ x, model = FALSE, 1:100)
+lm(y ~ x, mydata, 1:100, model = FALSE)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>Ajuste de argumentos</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Las argumentos de funciones también pueden ser <em>parcialmente</em> pareados, lo cual es útil para trabajo interactivo.  </p>
+
+<ol>
+<li>Compruebe si hay coincidencia exacta para un argumento con nombre</li>
+<li>Compruebe si hay una coincidencia parcial</li>
+<li>Compruebe si hay una coincidencia posicional</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <h2>El argumento &quot;...&quot;</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>El argumento &quot;...&quot; indica una variable de un número de argumentos que pertenecen a otras funciones.</p>
+
+<ul>
+<li>&quot;...&quot;, es bastante utilizado para extender funciones y en caso de que no se requiera copiar todos los argumentos de la función original.</li>
+</ul>
+
+<pre><code class="r">myplot &lt;- function(x, y, type = &quot;l&quot;, ...) {
+plot(x, y, type = type, ...)
+}
+</code></pre>
+
+<ul>
+<li>Las funciones genéricas hacen uso del &quot;...&quot;, así argumentos extra se le pueden pasar a los métodos</li>
+</ul>
+
+<pre><code class="r">mean
+function (x, ...)
+UseMethod(&quot;mean&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-37" style="background:;">
+  <hgroup>
+    <h2>Definiendo una función</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">f &lt;- function(a, b = 1, c = 2, d = NULL) {
+
+}
+</code></pre>
+
+<p>Además de no especificar un valor por defecto , también puede establecer un valor de argumento <code>NULL</code>.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-38" style="background:;">
+  <hgroup>
+    <h2>Evaluaciones</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Se evalúan los argumentos a funciones de la siguiente manera, sólo cuando sea necesario.</p>
+
+<pre><code class="r">f &lt;- function(a, b) {
+        a^2
+    } 
+f(2)
+</code></pre>
+
+<pre><code>## [1] 4
+</code></pre>
+
+<p>Esta función nunca usa el argumento <code>b</code>, así que llamar a <code>f(2)</code> no produce error debido a que el 2 obtiene posicionalmente a <code>a</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-39" style="background:;">
+  <hgroup>
+    <h2>Evaluaciones</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">f &lt;- function(a, b) {
+        print(a)
+        print(b)
+}
+f(45)
+</code></pre>
+
+<pre><code>## [1] 45
+</code></pre>
+
+<pre><code>## Error in print(b): el argumento &quot;b&quot; está ausente, sin valor por omisión
+</code></pre>
+
+<p>Observe que &quot;45&quot; quedó impreso primero antes de que se desencadenara el error. Esto es por que <code>b</code> no tiene que ser evaluado hasta después <code>print(a)</code>. Una vez que la función trató de evaluar <code>print(b)</code> tuvo que mostrar un error.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h2>Scoping en R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>El <code>scoping</code> en R describe como R busca los valores por nombres en los ambientes de trabajo. </p>
+
+<pre><code class="r">x &lt;- 10
+x
+</code></pre>
+
+<pre><code>## [1] 10
+</code></pre>
+
+<pre><code class="r">f &lt;- function() {
+    x &lt;- 1
+    y &lt;- 2
+    c(x, y)
+}
+f()
+</code></pre>
+
+<pre><code>## [1] 1 2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-41" style="background:;">
+  <hgroup>
+    <h2>Scoping en R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Si el nombre no esta definido dentro la función, R buscara en un nivel superior </p>
+
+<pre><code class="r">x &lt;- 2
+g &lt;- function() {
+    y &lt;- 1
+    c(x, y)
+}
+g()
+</code></pre>
+
+<pre><code>## [1] 2 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-42" style="background:;">
+  <hgroup>
+    <h2>Scoping en R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Si el nombre no esta definido dentro la función de manera local, o en un nivel superior, ocurrirá un error.  </p>
+
+<pre><code class="r">rm(x)
+g &lt;- function() {
+    y &lt;- 1
+    c(x, y)
+}
+g()
+</code></pre>
+
+<pre><code>## Error in g(): objeto &#39;x&#39; no encontrado
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-43" style="background:;">
+  <hgroup>
+    <h2>Scoping en R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>El <code>scoping</code> describe donde, no cuando, buscar un valor </p>
+
+<pre><code class="r">f &lt;- function() x
+x &lt;- 15
+f()
+</code></pre>
+
+<pre><code>## [1] 15
+</code></pre>
+
+<pre><code class="r">x &lt;- 20
+f()
+</code></pre>
+
+<pre><code>## [1] 20
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-44" style="background:;">
+  <hgroup>
+    <h2>Scoping en R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>El <code>scoping</code> trabaja igual para las funciones </p>
+
+<pre><code class="r">l &lt;- function(x) x + 1
+m &lt;- function() {
+    l &lt;- function(x) x * 2
+    l(10)
+}
+
+m()
+</code></pre>
+
+<pre><code>## [1] 20
+</code></pre>
+
+<pre><code class="r">c &lt;- 3
+c(c = c)
+</code></pre>
+
+<pre><code>## c 
+## 3
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-45" style="background:;">
+  <hgroup>
+    <h2>Scoping en R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Cada llamado a una nueva función tiene su propio y limpio ambiente.</p>
+
+<pre><code class="r">j &lt;- function() {
+    if (!exists(&quot;a&quot;)) {
+        a &lt;- 1
+        } else {
+            a &lt;- a + 1
+            }
+    print(a)
+}
+j(); a
+</code></pre>
+
+<pre><code>## [1] 1
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): objeto &#39;a&#39; no encontrado
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-46" style="background:;">
+  <hgroup>
+    <h2>Programación funcional</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>La programación funcional es una filosofía de programación que se basa en <a href="https://en.wikipedia.org/wiki/Lambda_calculus">lambda calculus</a>, es un enfoque de programación que ha tomado mucha popularidad en los últimos años, la programación funcional se concentra en cuatro constructores </p>
+
+<ol>
+<li>Datos (números,caracteres, etc.)</li>
+<li>Variables (argumentos de funciones)</li>
+<li>Funciones </li>
+<li>Aplicación de funciones (evaluación de funciones dados argumentos y/o datos)</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-47" style="background:;">
+  <hgroup>
+    <h2>Programación funcional</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Por ahora hemos tratado las variables dentro de funciones como datos, ya sean valores como números o cadenas de caracteres, o sean estructuras de datos como listas y vectores. Con la programación funcional también puede considerar la posibilidad de que se pueda proporcionar una función como un argumento de otra función, y una función puede devolver otra función como su resultado.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-48" style="background:;">
+  <hgroup>
+    <h2>Programación funcional</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">adder_maker &lt;- function(n){
+  function(x){
+    n + x
+  }
+}
+
+add2 &lt;- adder_maker(2)
+add3 &lt;- adder_maker(3)
+
+add2(5)
+</code></pre>
+
+<pre><code>## [1] 7
+</code></pre>
+
+<pre><code class="r">add3(5)
+</code></pre>
+
+<pre><code>## [1] 8
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-49" style="background:;">
+  <hgroup>
+    <h2>Operaciones vectorizadas en R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Muchas operaciones en R son <em>vectorizadas</em> haciendo el código más eficiente, conciso y fácil del leer </p>
+
+<pre><code class="r">&gt; x &lt;- 1:4; y &lt;- 6:9 
+&gt; x + y
+[1] 7 9 11 13 
+&gt; x &gt; 2
+[1] FALSE FALSE  TRUE  TRUE
+&gt; x &gt;= 2
+[1] FALSE  TRUE  TRUE  TRUE
+&gt; y == 8
+[1] FALSE FALSE TRUE FALSE 
+&gt; x * y
+[1] 6 14 24 36
+&gt; x / y
+[1] 0.1666667 0.2857143 0.3750000 0.4444444
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-50" style="background:;">
+  <hgroup>
+    <h2>Operaciones vectorizadas en Matrices</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">&gt; x &lt;- matrix(1:4, 2, 2); y &lt;- matrix(rep(10, 4), 2, 2)
+&gt; x * y       ## 
+     [,1] [,2]
+[1,]   10   30
+[2,]   20   40
+&gt; x / y
+     [,1] [,2]
+[1,]  0.1  0.3
+[2,]  0.2  0.4
+&gt; x %*% y     ## 
+     [,1] [,2]
+[1,]   40   40
+[2,]   60   60
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-51" style="background:;">
+  <hgroup>
+    <h2>Familia <code>apply</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <p>La escritura de un <code>for</code> y/o <code>while</code> es útil cuando se programa pero no lo son en otros casos, especialmente cuando se trabaja interactivamente con la línea de comandos. Hay algunas funciones que implementan ciclos para hacer esta tarea más fácil.</p>
+
+<ul>
+<li><code>lapply</code>: Realiza un ciclo sobre una lista y evalúa una función en cada uno de sus elementos </li>
+<li><code>sapply</code>: Hace lo mismo que <code>lapply</code> pero trata de simplificar los resultados</li>
+<li><code>apply</code>: Aplica una función sobre los margenes de un arreglo </li>
+<li><code>tapply</code>: Aplica una función sobre subconjuntos de un vector </li>
+<li><code>mapply</code>: Versión multivariada de <code>lapply</code></li>
+</ul>
+
+<p>La función auxiliar <code>split</code> es útil cuando se implementa en conjunto con la función <code>lapply</code>.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-52" style="background:;">
+  <hgroup>
+    <h2><code>lapply</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <p>La función <code>lapply</code> toma tres argumentos, (1) una lista <code>X</code>, (2) una función <code>FUN</code> (nombre de la función), (3) otros argumentos vía <code>&quot;...&quot;</code>; Si <code>X</code> no es una lista, será obligada a convertirse en una. </p>
+
+<pre><code class="r">lapply
+</code></pre>
+
+<pre><code>## function (X, FUN, ...) 
+## {
+##     FUN &lt;- match.fun(FUN)
+##     if (!is.vector(X) || is.object(X)) 
+##         X &lt;- as.list(X)
+##     .Internal(lapply(X, FUN))
+## }
+## &lt;bytecode: 0x102156808&gt;
+## &lt;environment: namespace:base&gt;
+</code></pre>
+
+<p>El ciclo real se realiza internamente en código <code>C</code>.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-53" style="background:;">
+  <hgroup>
+    <h2>lapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>lapply</code> siempre devuelve una lista, sin importar la clase del objeto de entrada.</p>
+
+<pre><code class="r">x &lt;- list(a = 1:5, b = rnorm(10))
+lapply(x, mean)
+</code></pre>
+
+<pre><code>## $a
+## [1] 3
+## 
+## $b
+## [1] 0.2360206
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-54" style="background:;">
+  <hgroup>
+    <h2>lapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">x &lt;- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
+lapply(x, mean)
+</code></pre>
+
+<pre><code>## $a
+## [1] 2.5
+## 
+## $b
+## [1] 0.0153527
+## 
+## $c
+## [1] 1.142766
+## 
+## $d
+## [1] 4.991354
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-55" style="background:;">
+  <hgroup>
+    <h2>lapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r"> x &lt;- 1:4
+lapply(x, runif)
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] 0.3103089
+## 
+## [[2]]
+## [1] 0.8915446 0.3429104
+## 
+## [[3]]
+## [1] 0.2077812 0.4605815 0.5008129
+## 
+## [[4]]
+## [1] 0.65132096 0.92413168 0.55307190 0.07081583
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-56" style="background:;">
+  <hgroup>
+    <h2>lapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r"> x &lt;- 1:4
+lapply(x, runif, min = 0, max = 10) # Acción de &quot;...&quot;
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] 5.483168
+## 
+## [[2]]
+## [1] 3.728950 4.337037
+## 
+## [[3]]
+## [1] 5.4448805 4.7157809 0.5755613
+## 
+## [[4]]
+## [1] 4.674387 5.067267 1.102975 5.612488
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-57" style="background:;">
+  <hgroup>
+    <h2>lapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>La función <code>lapply</code> y sus familiares hacen buen uso  de las funciones <em>anónimas</em>. Veamos una función anónima que extrae la primera columna en cada matriz.</p>
+
+<pre><code class="r">x &lt;- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2)) 
+lapply(x, function(elt) elt[,1])
+</code></pre>
+
+<pre><code>## $a
+## [1] 1 2
+## 
+## $b
+## [1] 1 2 3
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-58" style="background:;">
+  <hgroup>
+    <h2>sapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>sapply</code> tratara de simplificar el resultado de <code>lapply</code> si es posible.</p>
+
+<ul>
+<li><p>Si el resultado es una lista donde cada elemento es de longitud 1, entonces devuelve un vector</p></li>
+<li><p>Si el resultado es una lista donde cada elemento es un vector del mismo tamaño (&gt; 1), devuelve una matriz.</p></li>
+<li><p>Sino puede resolver otra cosa, devuelve una lista.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-59" style="background:;">
+  <hgroup>
+    <h2>sapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">x &lt;- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
+lapply(x, mean)
+</code></pre>
+
+<pre><code>## $a
+## [1] 2.5
+## 
+## $b
+## [1] -0.2915266
+## 
+## $c
+## [1] 1.209873
+## 
+## $d
+## [1] 4.815303
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-60" style="background:;">
+  <hgroup>
+    <h2>sapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">x &lt;- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
+sapply(x, mean) 
+</code></pre>
+
+<pre><code>##          a          b          c          d 
+##  2.5000000 -0.2449746  1.0532905  5.0348935
+</code></pre>
+
+<pre><code class="r">mean(x)
+</code></pre>
+
+<pre><code>## Warning in mean.default(x): argument is not numeric or logical: returning
+## NA
+</code></pre>
+
+<pre><code>## [1] NA
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-61" style="background:;">
+  <hgroup>
+    <h2>apply</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>apply</code> se utiliza para evaluar una función (inclusive si es anónima) sobre los margenes de una arreglo.</p>
+
+<ul>
+<li><p>Comúnmente se utiliza para aplicar funciones sobre las filas o columnas de una matriz</p></li>
+<li><p>Se puede utilizar para cualquier arreglo en general, p.e, para calcular la media un arreglo de matrices.</p></li>
+<li><p>En realidad no es más rápida que escribir un ciclo, pero funciona con una sola linea de código.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-62" style="background:;">
+  <hgroup>
+    <h2>apply</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">str(apply)
+</code></pre>
+
+<pre><code>## function (X, MARGIN, FUN, ...)
+</code></pre>
+
+<ul>
+<li><code>X</code> es un array (arreglo)</li>
+<li><code>MARGIN</code> es un vector entero indicando cual margen se debe &quot;conservar&quot;. </li>
+<li><code>FUN</code> es la función a ser aplicada </li>
+<li><code>...</code> es para los otros argumentos a ser pasados a <code>FUN</code></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-63" style="background:;">
+  <hgroup>
+    <h2>apply</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">x &lt;- matrix(rnorm(200), 20, 10)
+apply(x, 2, mean)
+</code></pre>
+
+<pre><code>##  [1]  0.11716441 -0.01827373  0.26138982 -0.04200450  0.31921930
+##  [6] -0.06748821  0.04992947  0.08896248  0.68964126 -0.41639863
+</code></pre>
+
+<pre><code class="r">apply(x, 1, sum)
+</code></pre>
+
+<pre><code>##  [1]  0.3441784  5.1938204 -0.5515992  3.8914532  8.1404637 -2.6262994
+##  [7]  1.7112459  3.1145096  2.4381558  2.0143606  1.9423053  0.8423567
+## [13]  1.2791405  2.4759467 -6.9124269  2.3592729  3.7497088 -4.9216078
+## [19] -2.7289721 -2.1131795
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-64" style="background:;">
+  <hgroup>
+    <h2>sumas y medias por filas/columnas</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Para calcular las sumas y medias de una matriz se tienen las funciones. </p>
+
+<ul>
+<li><code>rowSums</code> = <code>apply(x, 1, sum)</code></li>
+<li><code>rowMeans</code> = <code>apply(x, 1, mean)</code></li>
+<li><code>colSums</code> = <code>apply(x, 2, sum)</code></li>
+<li><code>colMeans</code> = <code>apply(x, 2, mean)</code></li>
+</ul>
+
+<p>Las funciones son <em>mucho</em> más rápidas, pero no se notara a menos que la aplique a matrices de grandes tamaños. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-65" style="background:;">
+  <hgroup>
+    <h2>apply</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Quantiles de las filas de una matriz.</p>
+
+<pre><code class="r">x &lt;- matrix(rnorm(200), 20, 10)
+apply(x, 1, quantile, probs = c(0.25, 0.75))
+</code></pre>
+
+<pre><code>##           [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
+## 25% -0.8873996 -1.0115677 -0.5056437 -0.3171047 -0.3173738 -0.3380861
+## 75%  0.5380402 -0.2058744  0.9916008  0.2545552  0.7759653  0.6994442
+##           [,7]       [,8]       [,9]      [,10]      [,11]      [,12]
+## 25% -0.3567331 -0.7980101 -0.4652477 -0.9859115 -0.8402693 -0.6661084
+## 75%  0.5678989  0.4346115  0.2882429  0.1875660 -0.2054532  1.2115695
+##          [,13]       [,14]      [,15]       [,16]      [,17]      [,18]
+## 25% -0.9751169 -0.78429996 -0.7601375 -0.75717218 -0.9354153 -2.2259758
+## 75%  0.5016764 -0.04454725  0.2684085  0.04492879  0.7876291 -0.1253589
+##          [,19]      [,20]
+## 25% -0.8276948 -0.2392485
+## 75%  0.9180985  1.1145909
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-66" style="background:;">
+  <hgroup>
+    <h2>apply</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Promedio de una matriz en un array</p>
+
+<pre><code class="r">a &lt;- array(rnorm(2 * 2 * 10), c(2, 2, 10))
+apply(a, c(1, 2), mean)
+</code></pre>
+
+<pre><code>##             [,1]      [,2]
+## [1,] -0.21938583 0.4556618
+## [2,]  0.01926939 0.5141942
+</code></pre>
+
+<pre><code class="r">rowMeans(a, dims = 2)
+</code></pre>
+
+<pre><code>##             [,1]      [,2]
+## [1,] -0.21938583 0.4556618
+## [2,]  0.01926939 0.5141942
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-67" style="background:;">
+  <hgroup>
+    <h2>tapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>tapply</code> se utiliza para aplicar una función a subconjuntos de un vector.</p>
+
+<pre><code class="r">str(tapply)
+</code></pre>
+
+<pre><code>## function (X, INDEX, FUN = NULL, ..., default = NA, simplify = TRUE)
+</code></pre>
+
+<ul>
+<li><code>X</code> es un vector</li>
+<li><code>INDEX</code> es un factor o una lista de factores (se ven obligados a ser factores) </li>
+<li><code>FUN</code> es la función a ser aplicada</li>
+<li><code>...</code> contiene otros argumentos a ser pasados a <code>FUN</code></li>
+<li><code>simplify</code>, debemos simplificar el resultado?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-68" style="background:;">
+  <hgroup>
+    <h2>tapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Calcular las medias por grupos.</p>
+
+<pre><code class="r">x &lt;- c(rnorm(10), runif(10), rnorm(10, 1))
+f &lt;- gl(3, 10)
+f
+</code></pre>
+
+<pre><code>##  [1] 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3
+## Levels: 1 2 3
+</code></pre>
+
+<pre><code class="r">tapply(x, f, mean)
+</code></pre>
+
+<pre><code>##          1          2          3 
+## -0.1831829  0.4751725  1.0142004
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-69" style="background:;">
+  <hgroup>
+    <h2>tapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Calcular las medias por grupos, sin simplificar.</p>
+
+<pre><code class="r">tapply(x, f, mean, simplify = FALSE)
+</code></pre>
+
+<pre><code>## $`1`
+## [1] -0.1831829
+## 
+## $`2`
+## [1] 0.4751725
+## 
+## $`3`
+## [1] 1.0142
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-70" style="background:;">
+  <hgroup>
+    <h2>tapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Hallar el rango por grupos.</p>
+
+<pre><code class="r">tapply(x, f, range)
+</code></pre>
+
+<pre><code>## $`1`
+## [1] -1.2891553  0.9806418
+## 
+## $`2`
+## [1] 0.02542118 0.97052057
+## 
+## $`3`
+## [1] -0.9949338  2.6747573
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-71" style="background:;">
+  <hgroup>
+    <h2>split</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>La función <code>split</code> toma un vector u otros objetos y los divide en grupos determinados por un factor o lista de factores.</p>
+
+<pre><code class="r">str(split)
+</code></pre>
+
+<pre><code>## function (x, f, drop = FALSE, ...)
+</code></pre>
+
+<ul>
+<li><code>x</code> es un vector (o lista) o data frame</li>
+<li><code>f</code> es un factor (o se vuelve uno) o una lista de factores</li>
+<li><code>drop</code> indica si los niveles de factores vacíos deben ser descartados</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-72" style="background:;">
+  <hgroup>
+    <h2>split</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">x &lt;- c(rnorm(10), runif(10), rnorm(10, 1))
+f &lt;- gl(3, 10)
+split(x, f)
+</code></pre>
+
+<pre><code>## $`1`
+##  [1]  0.69035144  1.18572576  0.72728607 -0.06132203 -0.14483400
+##  [6] -1.27941003  1.79897346  1.49360408 -0.08580021  2.01761775
+## 
+## $`2`
+##  [1] 0.95078868 0.26682814 0.62768188 0.07853035 0.10705203 0.45763513
+##  [7] 0.06789108 0.14045751 0.54383580 0.86168517
+## 
+## $`3`
+##  [1]  0.5585461  1.2034391  1.0007481  1.0666736 -0.2643580  1.8550030
+##  [7]  2.2823552  0.4331339  1.8130046  1.7206342
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-73" style="background:;">
+  <hgroup>
+    <h2>split</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Un uso común para <code>split</code> se da en compañía de <code>lapply</code>.</p>
+
+<pre><code class="r">lapply(split(x, f), mean)
+</code></pre>
+
+<pre><code>## $`1`
+## [1] 0.6342192
+## 
+## $`2`
+## [1] 0.4102386
+## 
+## $`3`
+## [1] 1.166918
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-74" style="background:;">
+  <hgroup>
+    <h2><code>split</code> en Data Frame</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">suppressMessages(suppressWarnings(library(datasets)))
+head(airquality)
+</code></pre>
+
+<pre><code>##   Ozone Solar.R Wind Temp Month Day
+## 1    41     190  7.4   67     5   1
+## 2    36     118  8.0   72     5   2
+## 3    12     149 12.6   74     5   3
+## 4    18     313 11.5   62     5   4
+## 5    NA      NA 14.3   56     5   5
+## 6    28      NA 14.9   66     5   6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-75" style="background:;">
+  <hgroup>
+    <h2><code>split</code> en Data Frame</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">suppressMessages(suppressWarnings(library(datasets)))
+s &lt;- split(airquality, airquality$Month)
+lapply(s, function(x) colMeans(x[, c(&quot;Ozone&quot;, &quot;Solar.R&quot;, &quot;Wind&quot;)]))
+</code></pre>
+
+<pre><code>## $`5`
+##    Ozone  Solar.R     Wind 
+##       NA       NA 11.62258 
+## 
+## $`6`
+##     Ozone   Solar.R      Wind 
+##        NA 190.16667  10.26667 
+## 
+## $`7`
+##      Ozone    Solar.R       Wind 
+##         NA 216.483871   8.941935 
+## 
+## $`8`
+##    Ozone  Solar.R     Wind 
+##       NA       NA 8.793548 
+## 
+## $`9`
+##    Ozone  Solar.R     Wind 
+##       NA 167.4333  10.1800
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-76" style="background:;">
+  <hgroup>
+    <h2><code>split</code> en Data Frame</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">sapply(s, function(x) colMeans(x[, c(&quot;Ozone&quot;, &quot;Solar.R&quot;, &quot;Wind&quot;)],
+                                 na.rm = TRUE))
+</code></pre>
+
+<pre><code>##                 5         6          7          8         9
+## Ozone    23.61538  29.44444  59.115385  59.961538  31.44828
+## Solar.R 181.29630 190.16667 216.483871 171.857143 167.43333
+## Wind     11.62258  10.26667   8.941935   8.793548  10.18000
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-77" style="background:;">
+  <hgroup>
+    <h2>mapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>mapply</code> es una versión multivariada de apply, la cual aplica una función en paralelo sobre un conjunto de argumentos.</p>
+
+<pre><code class="r">str(mapply)
+</code></pre>
+
+<pre><code>## function (FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES = TRUE)
+</code></pre>
+
+<ul>
+<li><code>FUN</code> es la función a aplicar </li>
+<li><code>...</code> contiene los argumentos a aplicar en la función original</li>
+<li><code>MoreArgs</code> es una lista de otros argumentos para <code>FUN</code>.</li>
+<li><code>SIMPLIFY</code> indica si el resultado debe ser simplificado </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-78" style="background:;">
+  <hgroup>
+    <h2>mapply</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>El siguiente código es tedioso de hacer </p>
+
+<p><code>list(rep(1, 4), rep(2, 3), rep(3, 2), rep(4, 1))</code></p>
+
+<p>En este caso se podría hacer lo siguiente </p>
+
+<pre><code class="r">mapply(rep, 1:4, 4:1)
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] 1 1 1 1
+## 
+## [[2]]
+## [1] 2 2 2
+## 
+## [[3]]
+## [1] 3 3
+## 
+## [[4]]
+## [1] 4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-79" style="background:;">
+  <hgroup>
+    <h2>Vectorizando una Función</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">noise &lt;- function(n, mean, sd) {
+    rnorm(n, mean, sd)
+    }
+noise(5, 1, 2)
+</code></pre>
+
+<pre><code>## [1]  0.3854427 -0.1719485  2.9372878 -3.5066817 -1.8403784
+</code></pre>
+
+<pre><code class="r">noise(1:5, 1:5, 2)
+</code></pre>
+
+<pre><code>## [1] -0.6689359  1.0873833 -0.9996748  5.8756246  3.0778806
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-80" style="background:;">
+  <hgroup>
+    <h2>Vectorización instantanea</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mapply(noise, 1:5, 1:5, 2)
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] 1.344486
+## 
+## [[2]]
+## [1] 4.127348 7.119876
+## 
+## [[3]]
+## [1] 6.897491 1.903211 2.200553
+## 
+## [[4]]
+## [1] 3.215731 6.166988 6.066500 2.969604
+## 
+## [[5]]
+## [1] 9.233963 3.350978 7.093961 4.348576 5.092452
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-81" style="background:;">
+  <hgroup>
+    <h2>Estándar de código para R</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li><p>Siempre utilice archivos de texto/editores</p></li>
+<li><p>Indente su código</p></li>
+<li><p>Limite el ancho se su código (80 columnas)</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-82" style="background:;">
+  <hgroup>
+    <h2>Indentado</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Indentado mejora la lectura del código</p></li>
+<li><p>El ajuste del ancho de la columna previene el anidado y la funciones muy largas</p></li>
+<li><p>Sugerencia: Indente mínimo 4 espacios; 8 espacios es lo ideal</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-83" style="background:;">
+  <hgroup>
+    <h2>Por que escribir funciones</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Si copio y pego dos veces es hora de escribir una función </li>
+<li>la creación de funciones reduce los errores del copiado y pegado </li>
+<li>Hace la actualización del código muy fácil </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-84" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Motivación'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Motivación'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Motivación'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Motivación'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Motivación'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Motivación'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Motivación'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Motivación'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Motivación'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Estructuras de Control'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Estructuras de control: if'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='if'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='if'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='for'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='for'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='For anidados'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='while'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='while'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='repeat'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='repeat'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='next, return'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Estructuras de control'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Funciones'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Definición de funciones'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Anatomía de una función'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Anatomía de una función'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Salidas: el valor devuelto <code>return</code>'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Salidas: el valor devuelto <code>return</code>'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Las funciones son objetos'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Resumen'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Argumentos de funciones'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Ajuste de argumentos'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Ajuste de argumentos'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Ajuste de argumentos'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Ajuste de argumentos'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='El argumento &quot;...&quot;'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Definiendo una función'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Evaluaciones'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Evaluaciones'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Scoping en R'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='Scoping en R'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='Scoping en R'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Scoping en R'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Scoping en R'>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='Scoping en R'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='Programación funcional'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='Programación funcional'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='Programación funcional'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='Operaciones vectorizadas en R'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='Operaciones vectorizadas en Matrices'>
+         50
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=51 title='Familia <code>apply</code>'>
+         51
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=52 title='<code>lapply</code>'>
+         52
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=53 title='lapply'>
+         53
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=54 title='lapply'>
+         54
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=55 title='lapply'>
+         55
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=56 title='lapply'>
+         56
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=57 title='lapply'>
+         57
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=58 title='sapply'>
+         58
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=59 title='sapply'>
+         59
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=60 title='sapply'>
+         60
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=61 title='apply'>
+         61
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=62 title='apply'>
+         62
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=63 title='apply'>
+         63
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=64 title='sumas y medias por filas/columnas'>
+         64
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=65 title='apply'>
+         65
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=66 title='apply'>
+         66
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=67 title='tapply'>
+         67
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=68 title='tapply'>
+         68
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=69 title='tapply'>
+         69
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=70 title='tapply'>
+         70
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=71 title='split'>
+         71
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=72 title='split'>
+         72
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=73 title='split'>
+         73
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=74 title='<code>split</code> en Data Frame'>
+         74
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=75 title='<code>split</code> en Data Frame'>
+         75
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=76 title='<code>split</code> en Data Frame'>
+         76
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=77 title='mapply'>
+         77
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=78 title='mapply'>
+         78
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=79 title='Vectorizando una Función'>
+         79
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=80 title='Vectorización instantanea'>
+         80
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=81 title='Estándar de código para R'>
+         81
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=82 title='Indentado'>
+         82
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=83 title='Por que escribir funciones'>
+         83
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=84 title='NA'>
+         84
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/interactive/js/ace/js/ace.js"></script>
+<script src="libraries/widgets/interactive/js/opencpu-0.5.js"></script>
+<script src="libraries/widgets/interactive/js/interactive.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  
+  <script src="shared/shiny.js" type="text/javascript"></script>
+  <script src="shared/slider/js/jquery.slider.min.js"></script>
+  <script src="shared/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="shared/slider/css/jquery.slider.min.css"></link>
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
